@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     public function races()
     {
-        return $this->belongsToMany(Race::class)->withPivot('points', 'penalty_points');
+        return $this->belongsToMany(Race::class, "races_users")->withPivot('points', 'penalty_points');
     }
 
     public function role()
@@ -18,7 +18,12 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    // ---
+    public function user_detail()
+    {
+        return $this->hasOne(UserDetail::class);
+    }
+
+
     public function isAuthorised($requiredRole)
     {
         return $this->role->searchInHiearchy($requiredRole);
@@ -27,7 +32,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role_id'
     ];
 
     protected $hidden = [

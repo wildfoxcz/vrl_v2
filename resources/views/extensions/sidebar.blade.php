@@ -25,7 +25,7 @@
         <!-- Locations Carousel -->
         <ul class="single-carousel">
             <li>
-                <img src="img/locations/1.jpg" alt="" class="img-responsive">
+                <img src="{{ asset('img/locations/1.jpg') }}" alt="" class="img-responsive">
                 <div class="info-single-carousel">
                     <h4>Saint Petersburg</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cillum dolore eu fugiat nulla  sit amet, consectetur adipisicing elit, pariatur.</p>
@@ -47,7 +47,7 @@
             <h4>Registrace</h4>
         </div>
         <a href="http://themeforest.net/user/iwthemes/portfolio?ref=iwthemes" target="_blank">
-            <img src="img/adds/registrace.jpg" class="img-responsive" alt="">
+            <img src="{{ asset('img/adds/registrace.jpg') }}" class="img-responsive" alt="">
         </a>
     </div>
     <!-- End Adds Sidebar -->
@@ -58,7 +58,7 @@
             <h4>Discord</h4>
         </div>
         <a href="http://themeforest.net/user/iwthemes/portfolio?ref=iwthemes" target="_blank">
-            <img src="img/adds/discord.jpg" class="img-responsive" alt="">
+            <img src="{{ asset('img/adds/discord.jpg') }}" class="img-responsive" alt="">
         </a>
     </div>
     <!-- End Adds Sidebar -->

@@ -3,7 +3,7 @@
 <head>
     <!-- Basic -->
     <meta charset="utf-8">
-    <title>VRL CZ/SK - Virtual Racing League</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="SportsCup - Bootstrap 4 Theme for Soccer And Sports">
     <meta name="author" content="That One Crew">
@@ -11,13 +11,13 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Theme CSS -->
-    <link href="assets/css/main.css" rel="stylesheet" media="screen">
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" media="screen">
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="img/icons/favicon.ico">
-    <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/icons/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="{{ asset('img/icons/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('img/icons/apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('img/icons/apple-touch-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('img/icons/apple-touch-icon-114x114.png') }}">
 </head>
 
 <body>
@@ -33,92 +33,16 @@
                     <!-- Logo-->
                     <div class="col col-xl-2">
                         <div class="logo">
-                            <a href="index.html" title="Return Home">
-                                <img src="img/logo.png" alt="Logo" class="logo_img">
+                            <a href="{{ url('/') }}" title="Return Home">
+                                <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo_img">
                             </a>
                         </div>
                     </div>
                     <!-- End Logo-->
 
-                    <!-- Adds nav-->
+                    <!-- Nav-->
                     <div class="col col-xl-10">
-                        <!-- mainmenu-->
-                        <nav class="mainmenu">
-                            <div class="container">
-                                <!-- Menu-->
-                                <ul class="sf-menu" id="menu">
-                                    <li class="current">
-                                        <a href="index.html">Úvod</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">Šampionáty</a>
-                                        <div class="sf-mega">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h5 style="font-family: Segoe UI;"><i class="fa fa-trophy" aria-hidden="true"></i >Assetto Corsa Competizione: <br>
-                                                        &nbsp; &nbsp;&nbsp; Big champ tournament</h5>
-                                                    <ul>
-                                                        <li><a href="table-point.html">Výsledky</a></li>
-                                                        <li><a href="fixtures.html">Závody</a></li>
-                                                        <li><a href="groups.html">Týmy</a></li>
-                                                        <li><a href="news-left-sidebar.html">Novinky</a></li>
-                                                        <li><a href="contact.html">Live Stream</a></li>
-                                                    </ul>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <h5 style="font-family: Segoe UI;"><i class="fa fa-trophy" aria-hidden="true"></i>Formula 1: <br>
-                                                        &nbsp; &nbsp;&nbsp; Season 2020/2021</h5>
-                                                    <ul>
-                                                        <li><a href="table-point.html">Výsledky</a></li>
-                                                        <li><a href="fixtures.html">Závody</a></li>
-                                                        <li><a href="groups.html">Týmy</a></li>
-                                                        <li><a href="news-left-sidebar.html">Novinky</a></li>
-                                                        <li><a href="contact.html">Live Stream</a></li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
-                                    </li>
-
-                                    <li class="current">
-                                        <a href="teams.html">Závody</a>
-                                    </li>
-
-                                    <li class="current">
-                                        <a href="players.html">Kalendář</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="fixtures.html">Pravidla</a>
-                                    </li>
-
-                                    <li class="current">
-                                        <a href="results.html">O nás</a>
-                                        <ul class="sub-current">
-                                            <li>
-                                                <a href="results.html">O Virtual Racing League</a>
-                                            </li>
-                                            <li>
-                                                <a href="single-result.html">Registrovaní jezdci</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    <li>
-                                        <a href="fixtures.html">Přihlášení</a>
-                                    </li>
-
-                                </ul>
-                                <!-- End Menu-->
-                            </div>
-                        </nav>
-                        <!-- End mainmenu-->
-
-                        <!-- Call Nav Menu-->
-                        <a class="mobile-nav" href="#mobile-nav"><i class="fa fa-bars"></i></a>
-                        <!-- End Call Nav Menu-->
+                        @include('extensions.navigation')
                     </div>
                     <!-- End nav Header-->
                 </div>
@@ -128,169 +52,6 @@
     </header>
     <!-- End Header-->
 
-    <!-- Mobile Nav-->
-    <div id="mobile-nav">
-        <!-- Menu-->
-        <ul>
-            <li>
-                <a href="index.html">Home</a>
-                <ul>
-                    <li>
-                        <a href="index-1.html">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="index-2.html">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="index-3.html">Home 3</a>
-                    </li>
-                    <li>
-                        <a href="index-4.html">Home 4</a>
-                    </li>
-                    <li>
-                        <a href="index-5.html">Home 5</a>
-                    </li>
-                    <li>
-                        <a href="index-6.html">Home 6</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="#">World Cup</a>
-                <ul>
-                    <li>
-                        <a href="#">World Cup</a>
-                        <ul>
-                            <li><a href="table-point.html">Point Table</a></li>
-                            <li><a href="fixtures.html">Fixtures</a></li>
-                            <li><a href="groups.html">Groups</a></li>
-                            <li><a href="news-left-sidebar.html">News</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="teams.html">Teams List</a></li>
-                    <li><a href="players.html">Players List</a></li>
-                    <li><a href="results.html">Results List</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="teams.html">Teams</a>
-                <ul>
-                    <li>
-                        <a href="teams.html">Teams List</a>
-                    </li>
-                    <li>
-                        <a href="single-team.html">Single Team</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="players.html">Players</a>
-                <ul>
-                    <li>
-                        <a href="players.html">Players List</a>
-                    </li>
-                    <li>
-                        <a href="single-player.html">Single Player</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="fixtures.html">Fixtures</a>
-            </li>
-
-            <li>
-                <a href="results.html">Results</a>
-                <ul>
-                    <li>
-                        <a href="results.html">Results List</a>
-                    </li>
-                    <li>
-                        <a href="single-result.html">Single Result</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="table-point.html">Point Table</a>
-            </li>
-
-            <li>
-                <a href="groups.html">Groups</a>
-            </li>
-
-            <li>
-                <a href="#">Features</a>
-                <ul>
-                    <li>
-                        <a href="#">Features</a>
-                        <ul>
-                            <li><a href="page-full-width.html">Full Width</a></li>
-                            <li><a href="page-left-sidebar.html">Left Sidebar</a></li>
-                            <li><a href="page-right-sidebar.html">Right Sidebar</a></li>
-                            <li><a href="page-404.html">404 Page</a></li>
-                            <li><a href="page-faq.html">FAQ</a></li>
-                            <li><a href="sitemap.html">Sitemap</a></li>
-                            <li><a href="page-pricing.html">Pricing</a></li>
-                            <li><a href="page-register.html">Register Form</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#">Headers & Footers</a>
-                        <ul>
-                            <li><a href="feature-header-footer-1.html">Header Version 1</a></li>
-                            <li><a href="feature-header-footer-2.html">Header Version 2</a></li>
-                            <li><a href="feature-header-footer-3.html">Header Version 3</a></li>
-                            <li><a href="index-5.html">Header Version 4</a></li>
-                            <li><a href="feature-header-footer-1.html#footer">Footer Version 1</a></li>
-                            <li><a href="feature-header-footer-2.html#footer">Footer Version 2</a></li>
-                            <li><a href="feature-header-footer-3.html#footer">Footer Version 3</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Pages</a>
-                        <ul>
-                            <li><a href="page-about.html">About Us</a></li>
-                            <li><a href="single-player.html">About Me</a></li>
-                            <li><a href="feature-header-footer-2.html#footer">Services</a></li>
-                            <li><a href="single-team.html">Club Info</a></li>
-                            <li><a href="single-result.html">Match Result</a></li>
-                            <li><a href="table-point.html">Positions</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">News</a>
-                        <ul>
-                            <li>
-                                <a href="news-left-sidebar.html">News Lef Sidebar</a>
-                            </li>
-                            <li>
-                                <a href="news-right-sidebar.html">News Right Sidebar</a>
-                            </li>
-                            <li>
-                                <a href="news-no-sidebar.html">News No Sidebar</a>
-                            </li>
-                            <li>
-                                <a href="single-news.html">Single News</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="contact.html">Contact</a>
-            </li>
-        </ul>
-        <!-- End Menu-->
-    </div>
-    <!-- End Mobile Nav-->
     <!-- section-hero-posts-->
     <div class="hero-header">
         <!-- Hero Slider-->

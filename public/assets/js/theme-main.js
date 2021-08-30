@@ -141,14 +141,14 @@ $(document).ready(function($) {
 
      //=================================== Subtmit Form  ===================================//
 
-       $('.form-theme').submit(function(event) {
+      /* $('.form-theme').submit(function(event) {
              event.preventDefault();
              var url = $(this).attr('action');
              var datos = $(this).serialize();
                 $.get(url, datos, function(resultado) {
                 $('.result').html(resultado);
             });
-        });
+        });*/
 
       //=================================== Form Newslleter  =================================//
 

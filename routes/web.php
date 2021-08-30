@@ -13,7 +13,25 @@
 
 // Authorization
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
 
 // Core Pages
 
 Route::get('/', 'PagesController@homepage');
+Route::get('/page/{slug}', array('as' => 'page.show', 'uses' => 'PageController@show'));
+
+
+// Races
+
+//Route::get('/races','RaceController@index');
+Route::resource('/races','RaceController');
+
+// Users
+
+Route::resource('/users', 'UserController');
+
+// Administrace
+
+Route::get('/admin','AdminController@login');
+
+
