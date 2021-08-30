@@ -1,2 +1,2 @@
-# vrl_v2
+# Virtual Racing League CMS
  Virtual Racing League CMS by LARAVEL
