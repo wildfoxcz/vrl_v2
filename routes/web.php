@@ -34,5 +34,11 @@ Route::resource('/users', 'UserController');
 
 Route::middleware('role:administrator')->group(function () {
     Route::get('/admin','Admin\\AdminController@index')->name('admin.index');
+
+    Route::resource('/admin/races', 'Admin\\RaceController')->names([
+        'index' => 'admin.races.index',
+        'create' => 'admin.races.create',
+        'store' => 'admin.races.store'
+    ]);
 });
 
