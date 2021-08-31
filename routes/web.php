@@ -43,5 +43,13 @@ Route::middleware('role:administrator')->group(function () {
         'edit' => 'admin.races.edit',
         'update' => 'admin.races.update'
     ]);
+
+    Route::resource('/admin/pages', 'Admin\\PageController')->names([
+        'index' => 'admin.pages.index',
+        'create' => 'admin.pages.create',
+        'store' => 'admin.pages.store',
+        'edit' => 'admin.pages.edit',
+        'update' => 'admin.pages.update'
+    ]);
 });
 

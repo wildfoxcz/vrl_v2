@@ -42,9 +42,9 @@
                 <a href="{{ url('/races') }}">Závody</a>
             </li>
 
-            <li class="current">
+<!--            <li class="current">
                 <a href="{{ url('/calendar') }}">Kalendář</a>
-            </li>
+            </li>-->
 
             <li>
                 <a href="{{ url('/page/pravidla') }}">Pravidla</a>

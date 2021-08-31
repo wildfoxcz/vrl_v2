@@ -51,6 +51,7 @@ class RaceController extends Controller
         return redirect()->route('admin.races.index');
     }
 
+
     /**
      * Display the specified resource.
      *

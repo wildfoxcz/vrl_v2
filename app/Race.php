@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Circuit;
+use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
