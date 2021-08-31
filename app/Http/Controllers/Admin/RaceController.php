@@ -70,7 +70,15 @@ class RaceController extends Controller
      */
     public function edit(Race $race)
     {
-        //
+        $championships = Championship::all();
+        $circuits = Circuit::all();
+
+        return view('admin.race.create_or_edit',
+            compact(
+                'championships',
+                'circuits',
+                'race'
+            ));
     }
 
     /**
@@ -82,7 +90,8 @@ class RaceController extends Controller
      */
     public function update(Request $request, Race $race)
     {
-        //
+        $this->store_or_update($race);
+        return redirect()->route('admin.races.index');
     }
 
     private function store_or_update(Race $race = null)

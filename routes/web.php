@@ -32,13 +32,16 @@ Route::resource('/users', 'UserController');
 
 // Administrace
 
+// @todo use group prefix
 Route::middleware('role:administrator')->group(function () {
     Route::get('/admin','Admin\\AdminController@index')->name('admin.index');
 
     Route::resource('/admin/races', 'Admin\\RaceController')->names([
         'index' => 'admin.races.index',
         'create' => 'admin.races.create',
-        'store' => 'admin.races.store'
+        'store' => 'admin.races.store',
+        'edit' => 'admin.races.edit',
+        'update' => 'admin.races.update'
     ]);
 });
 

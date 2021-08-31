@@ -49,7 +49,7 @@
                         </i>
                         View
                     </a>-->
-                    <a class="btn btn-info btn-sm" href="#">
+                    <a class="btn btn-info btn-sm" href="{{ route('admin.races.edit', $race) }}">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
