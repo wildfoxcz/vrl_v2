@@ -31,21 +31,29 @@
                     Slug
                 </th>
                 <th style="width: 20%">
+                    Status
+                </th>
+                <th style="width: 20%">
                 </th>
             </tr>
             </thead>
             <tbody>
-            @foreach($championship as $championship)
+            @foreach($championships as $championship)
             <tr>
                 <td>
                     #{{ $championship->id }}
                 </td>
                 <td>
-                    {{ $championship->title }}
+                    {{ $championship->name }}
                 </td>
                 <td>
                     <a>
-                        {{ $championship->slug }}
+                        {{ $championship->description }}
+                    </a>
+                </td>
+                <td>
+                    <a>
+                        {{ $championship->is_active }}
                     </a>
                 </td>
                 <td class="project-actions text-right">

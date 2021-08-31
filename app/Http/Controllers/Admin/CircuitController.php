@@ -1,15 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-use App\Championship;
-use App\Page;
 use App\Circuit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
-class ChampionshipController extends Controller
+class CircuitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +14,9 @@ class ChampionshipController extends Controller
      */
     public function index()
     {
-        $championships = Championship::all();
+        $circuits = Page::all();
 
-        return view('admin.championship.index', compact('championships'));
+        return view('admin.circuit.index', compact('circuits'));
     }
 
     /**
@@ -31,7 +27,7 @@ class ChampionshipController extends Controller
     public function create()
     {
 
-        return view('admin.championship.create_or_edit');
+        return view('admin.circuit.create_or_edit');
     }
 
     /**
@@ -43,16 +39,16 @@ class ChampionshipController extends Controller
     public function store(Request $request)
     {
         $this->store_or_update();
-        return redirect()->route('admin.championship.index');
+        return redirect()->route('admin.pages.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Race  $championship
+     * @param  \App\Race  $page
      * @return \Illuminate\Http\Response
      */
-    public function show(Championship $championship)
+    public function show(Page $page)
     {
         //
     }
@@ -60,13 +56,13 @@ class ChampionshipController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Race  $championship
+     * @param  \App\Race  $page
      * @return \Illuminate\Http\Response
      */
-    public function edit(Championship $championship)
+    public function edit(Page $page)
     {
 
-        return view('admin.championship.create_or_edit','championship'
+        return view('admin.page.create_or_edit',
             );
     }
 
@@ -74,23 +70,23 @@ class ChampionshipController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Race  $championship
+     * @param  \App\Race  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Championship $championship)
+    public function update(Request $request, Page $page)
     {
-        $this->store_or_update($championship);
-        return redirect()->route('admin.championship.index');
+        $this->store_or_update($page);
+        return redirect()->route('admin.pages.index');
     }
 
-    private function store_or_update(Championship $championship = null)
+    private function store_or_update(Page $page = null)
     {
-        if(is_null($championship))
-            $championship = new Championship ;
+        if(is_null($page))
+            $page = new Page;
 
         $rules = [
-            'name' => 'required|string',
-            'description' => 'required|string',
+            'title' => 'required|string',
+            'content' => 'required|string',
         ];
 
         $this->validate(request(), $rules);
@@ -98,23 +94,23 @@ class ChampionshipController extends Controller
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
-            $championship->$property = $value;
+            $page->$property = $value;
         }
 
-        $championship->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
+        $page->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
 
-        $championship->save();
+        $page->save();
 
-        return $championship;
+        return $page;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Race  $championship
+     * @param  \App\Race  $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Championship $championship)
+    public function destroy(Race $page)
     {
         //
     }

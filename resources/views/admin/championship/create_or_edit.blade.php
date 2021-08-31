@@ -1,10 +1,10 @@
 <?php
-    if(isset($page))
+    if(isset($championship))
         $mode = 'edit';
     else
         $mode = 'create';
 
-    $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' stránku';
+    $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' šampionát';
 ?>
 
 @extends('admin.layout.layout')
@@ -14,10 +14,10 @@
 @section('content')
 <!-- Default box -->
 @if($mode == 'edit')
-<form action="{{ route('admin.pages.update', $page) }}" method="post">
+<form action="{{ route('admin.championship.update', $championship) }}" method="post">
 @method('patch')
 @else
-<form action="{{ route('admin.pages.store') }}" method="post">
+<form action="{{ route('admin.championship.store') }}" method="post">
 @endif
     @csrf
     <div class="row">
@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="inputName">Název stránky</label>
-                        <input type="text" id="inputName" class="form-control" name="title" value="{{ old('title', $mode == 'edit' ? $page->title : null) }}">
+                        <input type="text" id="inputName" class="form-control" name="name" value="{{ old('name', $mode == 'edit' ? $championship->name : null) }}">
                     </div>
                     @if ($errors->has("name"))
                         @foreach ($errors->get("name") as $error)
@@ -47,7 +47,7 @@
                     @endif
                     <div class="form-group">
                         <label for="inputDescription">Obsah stránky</label>
-                        <textarea id="inputDescription" class="form-control" rows="4" name="content">{{ old('content', $mode == 'edit' ? $page->content : null) }}</textarea>
+                        <textarea id="inputDescription" class="form-control" rows="4" name="description">{{ old('description', $mode == 'edit' ? $championship->description : null) }}</textarea>
                     </div>
                     @if ($errors->has("description"))
                         @foreach ($errors->get("description") as $error)
