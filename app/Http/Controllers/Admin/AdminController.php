@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     public function index() {
-        return('@todo');
-       //return view('admin.login');
+       return view('admin.index');
     }
 }
