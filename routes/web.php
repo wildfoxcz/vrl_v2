@@ -32,6 +32,7 @@ Route::resource('/users', 'UserController');
 
 // Administrace
 
-Route::get('/admin','AdminController@login');
-
+Route::middleware('role:administrator')->group(function () {
+    Route::get('/admin','Admin\\AdminController@index')->name('admin.index');
+});
 

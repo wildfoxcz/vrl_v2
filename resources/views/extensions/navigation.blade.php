@@ -71,6 +71,12 @@
                     <a href="{{ url('/profile') }}">Můj profil</a>
                 </li>
 
+                @if(auth()->user()->isAuthorised('administrator'))
+                    <li>
+                        <a href="{{ route('admin.index') }}">Administrace</a>
+                    </li>
+                @endif
+
                 <li>
                     <a href="{{ url('/logout') }}">Odhlásit</a>
                 </li>
