@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <div class="team">
-                        <h1><img width="70" height="46" src="{{ asset('img/clubs-logos') }}/{{ $race->circuits->country }}.png" alt="club-logo">
+                        <h1><img width="70" height="46" src="{{ asset('img/flags') }}/{{ $race->circuits->country }}.png" alt="club-logo">
                             {{ $race->name }}
                         </h1>
                         <ul>
