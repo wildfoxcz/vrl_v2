@@ -3,6 +3,7 @@
 namespace App;
 use App\Circuit;
 use Carbon\Carbon;
+use App\Championship;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +16,8 @@ class Race extends Model
 
     public function championship()
     {
-        return $this->belongsTo('App\Championship');
+        return $this->belongsTo('App\Championship','championship_id');
+
     }
 
     public function users()

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsCategoriesTable extends Migration
+class CreateChampionshipTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePostsCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts_categories', function (Blueprint $table) {
+        Schema::create('championships', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('post_id')->unsigned();
-            $table->string('name','200')->nullable();
-            $table->string('image','200')->nullable();
-            $table->string('slug','200')->nullable();
+            $table->string('name', '200');
+            $table->string('slug', '200');
+            $table->text('description');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePostsCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts_categories');
+        Schema::dropIfExists('championships');
     }
 }
