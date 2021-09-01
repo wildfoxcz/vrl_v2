@@ -65,8 +65,7 @@ class PageController extends Controller
     public function edit(Page $page)
     {
 
-        return view('admin.page.create_or_edit'
-            );
+        return view('admin.page.create_or_edit', compact('page'));
     }
 
     /**
