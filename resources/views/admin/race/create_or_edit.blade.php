@@ -21,7 +21,7 @@
 @endif
     @csrf
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Obecné</h3>
@@ -47,7 +47,13 @@
                     @endif
                     <div class="form-group">
                         <label for="inputDescription">Popis závodu</label>
-                        <textarea id="inputDescription" class="form-control" rows="4" name="description">{{ old('description', $mode == 'edit' ? $race->description : null) }}</textarea>
+                        <textarea id="inputDescription" class="ckeditor form-control" rows="4" name="description">{{ old('description', $mode == 'edit' ? $race->description : null) }}</textarea>
+                        <script type="text/javascript">
+                            CKEDITOR.replace('description', {
+                                filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+                                filebrowserUploadMethod: 'form'
+                            });
+                        </script>
                     </div>
                     @if ($errors->has("description"))
                         @foreach ($errors->get("description") as $error)
@@ -67,6 +73,19 @@
                             </div>
                         @endforeach
                     @endif
+
+                    <div class="form-group">
+                        <label for="inputStartTime">Obrázek</label>
+                        <input type="text" id="inputStartTime" class="form-control" name="started_at" value="{{ old('started_at', $mode == 'edit' ? $race->started_at : null) }}">
+                    </div>
+                    @if ($errors->has("started_at"))
+                        @foreach ($errors->get("started_at") as $error)
+                            <div class="errorMessage">
+                                <strong>{{$error}}</strong>
+                            </div>
+                        @endforeach
+                    @endif
+
                     <div class="form-group">
                         <label for="inputStatus">Šampionát</label>
                         <select id="inputStatus" class="form-control custom-select" name="championship_id">

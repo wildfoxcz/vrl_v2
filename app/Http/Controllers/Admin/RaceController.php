@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Championship;
 use App\Race;
 use App\Circuit;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class RaceController extends Controller
 {

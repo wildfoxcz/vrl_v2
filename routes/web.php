@@ -32,6 +32,11 @@ Route::resource('/users', 'UserController');
 
 // Administrace
 
+// CKEditor
+
+Route::get('ckeditor', 'CkeditorController@index');
+Route::post('ckeditor/upload', 'CkeditorController@upload')->name('ckeditor.upload');
+
 // @todo use group prefix
 Route::middleware('role:administrator')->group(function () {
     Route::get('/admin','Admin\\AdminController@index')->name('admin.index');
