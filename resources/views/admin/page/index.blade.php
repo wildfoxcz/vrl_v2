@@ -50,7 +50,7 @@
                 </td>
                 <td class="project-actions text-right">
 
-                   <a class="btn btn-primary btn-sm" href="{{ url('pages').'/'.$page->slug }}">
+                   <a class="btn btn-primary btn-sm" href="{{ url('page').'/'.$page->slug }}">
                         <i class="fas fa-folder">
                         </i>
                         Zobrazit

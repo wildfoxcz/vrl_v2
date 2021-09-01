@@ -7,6 +7,7 @@ use App\Page;
 use App\Circuit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -99,7 +100,7 @@ class PageController extends Controller
             $page->$property = $value;
         }
 
-        $page->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
+        $page->slug = \Illuminate\Support\Str::slug($page->title,'-');
 
         $page->save();
 
