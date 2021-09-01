@@ -19,7 +19,7 @@ class RaceController extends Controller
      */
     public function index()
     {
-        $races = Race::all();
+        $races = Race::with('championship')->get();
 
         return view('admin.race.index', compact('races'));
     }
