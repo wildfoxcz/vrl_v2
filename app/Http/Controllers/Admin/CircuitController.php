@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-use App\Championship;
-use App\Page;
 use App\Circuit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PageController extends Controller
+class CircuitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
+        $circuits = Page::all();
 
-        return view('admin.page.index', compact('pages'));
+        return view('admin.circuit.index', compact('circuits'));
     }
 
     /**
@@ -30,7 +27,7 @@ class PageController extends Controller
     public function create()
     {
 
-        return view('admin.page.create_or_edit');
+        return view('admin.circuit.create_or_edit');
     }
 
     /**
@@ -65,7 +62,7 @@ class PageController extends Controller
     public function edit(Page $page)
     {
 
-        return view('admin.page.create_or_edit'
+        return view('admin.page.create_or_edit',
             );
     }
 

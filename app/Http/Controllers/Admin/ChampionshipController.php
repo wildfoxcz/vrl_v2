@@ -8,7 +8,8 @@ use App\Circuit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PageController extends Controller
+
+class ChampionshipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
+        $championships = Championship::all();
 
-        return view('admin.page.index', compact('pages'));
+        return view('admin.championship.index', compact('championships'));
     }
 
     /**
@@ -30,7 +31,7 @@ class PageController extends Controller
     public function create()
     {
 
-        return view('admin.page.create_or_edit');
+        return view('admin.championship.create_or_edit');
     }
 
     /**
@@ -42,16 +43,16 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $this->store_or_update();
-        return redirect()->route('admin.pages.index');
+        return redirect()->route('admin.championship.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Race  $page
+     * @param  \App\Race  $championship
      * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show(Championship $championship)
     {
         //
     }
@@ -59,13 +60,13 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Race  $page
+     * @param  \App\Race  $championship
      * @return \Illuminate\Http\Response
      */
-    public function edit(Page $page)
+    public function edit(Championship $championship)
     {
 
-        return view('admin.page.create_or_edit'
+        return view('admin.championship.create_or_edit','championship'
             );
     }
 
@@ -73,23 +74,23 @@ class PageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Race  $page
+     * @param  \App\Race  $championship
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(Request $request, Championship $championship)
     {
-        $this->store_or_update($page);
-        return redirect()->route('admin.pages.index');
+        $this->store_or_update($championship);
+        return redirect()->route('admin.championship.index');
     }
 
-    private function store_or_update(Page $page = null)
+    private function store_or_update(Championship $championship = null)
     {
-        if(is_null($page))
-            $page = new Page;
+        if(is_null($championship))
+            $championship = new Championship ;
 
         $rules = [
-            'title' => 'required|string',
-            'content' => 'required|string',
+            'name' => 'required|string',
+            'description' => 'required|string',
         ];
 
         $this->validate(request(), $rules);
@@ -97,23 +98,23 @@ class PageController extends Controller
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
-            $page->$property = $value;
+            $championship->$property = $value;
         }
 
-        $page->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
+        $championship->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
 
-        $page->save();
+        $championship->save();
 
-        return $page;
+        return $championship;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Race  $page
+     * @param  \App\Race  $championship
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Race $page)
+    public function destroy(Championship $championship)
     {
         //
     }

@@ -27,4 +27,5 @@ class Race extends Model
     {
         return $this->belongsTo('App\Circuit', 'circuit_id');
     }
+
 }

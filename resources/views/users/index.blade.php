@@ -24,7 +24,7 @@
                 <div class="item-player">
                     <div class="head-player">
                         <img src="img/avatars/{{ $user->user_detail->image }}" alt="location-team">
-                        <div class="overlay"><a href="single-player.html">+</a></div>
+                        <div class="overlay"><a href="#">+</a></div>
                     </div>
                     <div class="info-player">
                     <!--                                    <span class="number-player">
@@ -41,7 +41,7 @@
                             <li><strong>Rok narození</strong> <span>{{ $user->user_detail->birthday }}</span></li>
                         </ul>
                     </div>
-                    <a href="single-player.html" class="btn">Zobrazit jezdce<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    <a href="#" class="btn">Zobrazit jezdce<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 </div>
             </div>
             <!-- End Item Player -->

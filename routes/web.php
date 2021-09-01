@@ -51,5 +51,13 @@ Route::middleware('role:administrator')->group(function () {
         'edit' => 'admin.pages.edit',
         'update' => 'admin.pages.update'
     ]);
+
+    Route::resource('/admin/championship', 'Admin\\ChampionshipController')->names([
+        'index' => 'admin.championship.index',
+        'create' => 'admin.championship.create',
+        'store' => 'admin.championship.store',
+        'edit' => 'admin.championship.edit',
+        'update' => 'admin.championship.update'
+    ]);
 });
 
