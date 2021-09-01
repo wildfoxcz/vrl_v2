@@ -63,8 +63,19 @@
                         @endforeach
                     @endif
                     <div class="form-group">
-                        <label for="inputStartTime">Začátek závodu</label><!-- @todo use datepicker -->
-                        <input type="text" id="inputStartTime" placeholder="RRRR-MM-DD hh:mm:ss" class="form-control" name="started_at" value="{{ old('started_at', $mode == 'edit' ? $race->started_at : null) }}">
+                        <label for="inputStartTime">Začátek závodu</label>
+                        <div class="input-group date" id="startdatetime" data-target-input="nearest">
+                            <input type="text"
+                                   class="form-control datetimepicker-input"
+                                   data-target="#startdatetime"
+                                   id="inputStartTime"
+                                   name="started_at"
+                                   value="{{ old('started_at', $mode == 'edit' ? $race->started_at : null) }}"
+                            />
+                            <div class="input-group-append" data-target="#startdatetime" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
                     </div>
                 @if ($errors->has("started_at"))
                         @foreach ($errors->get("started_at") as $error)
@@ -81,7 +92,7 @@
                             @foreach($championships as $championship)
                                 <option
                                     value="{{$championship->id}}"
-                                    {{ old('championship_id', $mode == 'edit' ? $race->championship_id : null) == $championship->id ? 'selected' : '' }}"
+                                    {{ old('championship_id', $mode == 'edit' ? $race->championship_id : null) == $championship->id ? 'selected' : '' }}
                                 >{{$championship->name}}</option>
                             @endforeach
                         </select>
@@ -100,7 +111,7 @@
                             @foreach($circuits as $circuit)
                                 <option
                                     value="{{$circuit->id}}"
-                                    {{ old('circuit_id', $mode == 'edit' ? $race->circuit_id : null) == $circuit->id ? 'selected' : '' }}"
+                                    {{ old('circuit_id', $mode == 'edit' ? $race->circuit_id : null) == $circuit->id ? 'selected' : '' }}
                                 >{{$circuit->name}}</option>
                             @endforeach
                         </select>
@@ -125,4 +136,23 @@
         </div>
     </div>
 </form>
+@endsection
+
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('/css/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.css') }}">
+@endsection
+
+@section('scripts')
+    <!-- InputMask -->
+    <script src="{{ asset('/js/moment/moment.min.js') }}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{{ asset('/js/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js') }}"></script>
+<script>
+    $(function () {
+        $('#startdatetime').datetimepicker({
+            icons: { time: 'far fa-clock' },
+            format: 'YYYY-MM-DD kk:mm:ss'
+        });
+    });
+</script>
 @endsection
