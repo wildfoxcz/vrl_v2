@@ -5,8 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Championship extends Model
 {
-    protected $table = "championships";
-
     public function races()
     {
          return $this->hasMany('App\Races')->latest();
@@ -14,6 +12,6 @@ class Championship extends Model
 
     public function championship()
     {
-        return $this->belongsTo('App\Race','_id');
+        return $this->belongsTo('App\Race','championship_id');
     }
 }
