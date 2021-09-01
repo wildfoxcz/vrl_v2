@@ -16,7 +16,7 @@ class Race extends Model
 
     public function championship()
     {
-        return $this->belongsTo('App\Championship','championships_id');
+        return $this->belongsTo('App\Championship','championship_id');
 
     }
 
