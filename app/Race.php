@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Circuit;
+use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,4 +27,5 @@ class Race extends Model
     {
         return $this->belongsTo('App\Circuit', 'circuit_id');
     }
+
 }

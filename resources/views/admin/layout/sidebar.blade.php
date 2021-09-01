@@ -23,7 +23,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('/admin') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Nástěnka
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/pages') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Stránky
@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/races') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Závody
@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/championship') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Šampionáty

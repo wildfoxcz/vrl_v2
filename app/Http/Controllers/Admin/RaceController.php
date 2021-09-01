@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Championship;
 use App\Race;
 use App\Circuit;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class RaceController extends Controller
 {
@@ -50,6 +52,7 @@ class RaceController extends Controller
         $this->store_or_update();
         return redirect()->route('admin.races.index');
     }
+
 
     /**
      * Display the specified resource.

@@ -6,15 +6,15 @@
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Projects</h3>
+        <h3 class="card-title">Závody</h3>
 
         <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                <i class="fas fa-times"></i>
-            </button>
+
+            <a class="btn btn-primary btn-sm" href="{{ url('admin/races/create') }}">
+                <i class="fas fa-folder">
+                </i>
+                Přidat závod
+            </a>
         </div>
     </div>
     <div class="card-body p-0">
@@ -28,6 +28,9 @@
                     Název závodu
                 </th>
                 <th style="width: 20%">
+                    Šampionát
+                </th>
+                <th style="width: 20%">
                 </th>
             </tr>
             </thead>
@@ -35,24 +38,27 @@
             @foreach($races as $race)
             <tr>
                 <td>
-                    #
+                    #{{ $race->id }}
+                </td>
+                <td>
+                    {{ $race->name }}
                 </td>
                 <td>
                     <a>
-                        {{ $race->name }}
+
                     </a>
                 </td>
                 <td class="project-actions text-right">
 
-<!--                    <a class="btn btn-primary btn-sm" href="#">
+                   <a class="btn btn-primary btn-sm" href="{{ url('races').'/'.$race->slug }}">
                         <i class="fas fa-folder">
                         </i>
-                        View
-                    </a>-->
+                        Zobrazit
+                    </a>
                     <a class="btn btn-info btn-sm" href="{{ route('admin.races.edit', $race) }}">
                         <i class="fas fa-pencil-alt">
                         </i>
-                        Edit
+                        Upravit
                     </a>
 <!--                    <a class="btn btn-danger btn-sm" href="#">
                         <i class="fas fa-trash">

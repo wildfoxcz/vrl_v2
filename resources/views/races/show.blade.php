@@ -26,9 +26,9 @@
 
             <!-- Result -->
             <div class="row">
-                <div class="col-md-5 col-lg-5">
+                <div class="col-md-12 col-lg-12">
                     <div class="team">
-                        <h1><img width="70" height="46" src="{{ asset('img/clubs-logos/uk.jpg') }}" alt="club-logo">
+                        <h1><img width="70" height="46" src="{{ asset('img/flags') }}/{{ $race->circuits->country }}.png" alt="club-logo">
                             {{ $race->name }}
                         </h1>
                         <ul>
@@ -78,11 +78,12 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-xl-4">
-                                            <img src="{{ asset('img/clubs-teams/single-team.jpg') }}" alt="">
+                                            <img src="{{ asset('img/clubs-teams/single-team.jpg') }}" alt=""><br><br>
+                                            <button class="btn btn-primary">Přihlásit se do závodu</button>
                                         </div>
 
                                         <div class="col-lg-12 col-xl-8">
-                                            <p>{{ $race->description }}</p>
+                                            <p>{!! $race->description !!}</p>
                                         </div>
                                     </div>
                                 </div>

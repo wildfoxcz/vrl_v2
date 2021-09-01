@@ -33,7 +33,7 @@
                         @foreach($races as $race)
                         <tr>
                             <td>
-                                img
+                                <img src="{{ asset('img/clubs-teams/single-team.jpg') }}" alt="">
                             </td>
                             <td>
                                 <a style="color: black" href="races/{{ $race->slug }}">
@@ -42,11 +42,13 @@
                             </td>
                             <td>
 
-                                <img src="{{ $race->circuits->country }}" alt="">{{ $race->circuits->name }}
+                                <img width="20" src="{{ asset('img/flags') }}/{{ $race->circuits->country }}.png" alt="">{{ $race->circuits->name }}
 
                             </td>
                             <td>
-                                {{ $race->started_at }}
+                                {{
+
+                                    \Carbon\Carbon::parse($race->started_at)->format('d.m.Y') }}
                             </td>
                             <td>
                                 <div style="color:green;">Nadcházející</div>
