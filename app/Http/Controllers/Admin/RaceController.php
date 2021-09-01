@@ -118,7 +118,7 @@ class RaceController extends Controller
             $race->$property = $value;
         }
 
-        $race->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
+        $race->slug = \Illuminate\Support\Str::slug($race->name,'-');
 
         $race->save();
 
