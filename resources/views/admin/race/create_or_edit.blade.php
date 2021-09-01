@@ -64,21 +64,9 @@
                     @endif
                     <div class="form-group">
                         <label for="inputStartTime">Začátek závodu</label><!-- @todo use datepicker -->
-                        <input type="text" id="inputStartTime" class="form-control" name="started_at" value="{{ old('started_at', $mode == 'edit' ? $race->started_at : null) }}">
+                        <input type="text" id="inputStartTime" placeholder="RRRR-MM-DD hh:mm:ss" class="form-control" name="started_at" value="{{ old('started_at', $mode == 'edit' ? $race->started_at : null) }}">
                     </div>
-                    @if ($errors->has("started_at"))
-                        @foreach ($errors->get("started_at") as $error)
-                            <div class="errorMessage">
-                                <strong>{{$error}}</strong>
-                            </div>
-                        @endforeach
-                    @endif
-
-                    <div class="form-group">
-                        <label for="inputStartTime">Obrázek</label>
-                        <input type="text" id="inputStartTime" class="form-control" name="started_at" value="{{ old('started_at', $mode == 'edit' ? $race->started_at : null) }}">
-                    </div>
-                    @if ($errors->has("started_at"))
+                @if ($errors->has("started_at"))
                         @foreach ($errors->get("started_at") as $error)
                             <div class="errorMessage">
                                 <strong>{{$error}}</strong>

@@ -6,6 +6,7 @@
     <title>AdminLTE 3 | Blank Page</title>
     <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
