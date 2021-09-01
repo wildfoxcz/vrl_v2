@@ -45,7 +45,7 @@
                 </td>
                 <td>
                     <a>
-
+                        {{ $race->championship->name ?? '' }}
                     </a>
                 </td>
                 <td class="project-actions text-right">
