@@ -29,6 +29,6 @@ class CreatePostsCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts_categories');
+        Schema::dropIfExists('post_categories');
     }
 }
