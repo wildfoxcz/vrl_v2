@@ -92,7 +92,7 @@
                             @foreach($championships as $championship)
                                 <option
                                     value="{{$championship->id}}"
-                                    {{ old('championship_id', $mode == 'edit' ? $race->championship_id : null) == $championship->id ? 'selected' : '' }}"
+                                    {{ old('championship_id', $mode == 'edit' ? $race->championship_id : null) == $championship->id ? 'selected' : '' }}
                                 >{{$championship->name}}</option>
                             @endforeach
                         </select>
@@ -111,7 +111,7 @@
                             @foreach($circuits as $circuit)
                                 <option
                                     value="{{$circuit->id}}"
-                                    {{ old('circuit_id', $mode == 'edit' ? $race->circuit_id : null) == $circuit->id ? 'selected' : '' }}"
+                                    {{ old('circuit_id', $mode == 'edit' ? $race->circuit_id : null) == $circuit->id ? 'selected' : '' }}
                                 >{{$circuit->name}}</option>
                             @endforeach
                         </select>
