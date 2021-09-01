@@ -8,7 +8,7 @@
             <h4>{{ $page->title }}</h4>
         </div>
         <div class="info-panel">
-            {{ $page->content }}
+            {!!  $page->content  !!}
         </div>
     </div>
     </div>

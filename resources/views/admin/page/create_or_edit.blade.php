@@ -38,8 +38,8 @@
                         <label for="inputName">Název stránky</label>
                         <input type="text" id="inputName" class="form-control" name="title" value="{{ old('title', $mode == 'edit' ? $page->title : null) }}">
                     </div>
-                    @if ($errors->has("name"))
-                        @foreach ($errors->get("name") as $error)
+                    @if ($errors->has("title"))
+                        @foreach ($errors->get("title") as $error)
                             <div class="errorMessage"> <!-- @todo find class for errors in adminLTE -->
                                 <strong>{{$error}}</strong>
                             </div>
@@ -47,10 +47,16 @@
                     @endif
                     <div class="form-group">
                         <label for="inputDescription">Obsah stránky</label>
-                        <textarea id="inputDescription" class="form-control" rows="4" name="content">{{ old('content', $mode == 'edit' ? $page->content : null) }}</textarea>
-                    </div>
-                    @if ($errors->has("description"))
-                        @foreach ($errors->get("description") as $error)
+                        <textarea id="inputDescription" class="ckeditor form-control" rows="4" name="content">{{ old('content', $mode == 'edit' ? $page->content : null) }}</textarea>
+                        <script type="text/javascript">
+                            CKEDITOR.replace('content', {
+                                filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+                                filebrowserUploadMethod: 'form'
+                            });
+                        </script>
+                       </div>
+                    @if ($errors->has("content"))
+                        @foreach ($errors->get("content") as $error)
                             <div class="errorMessage">
                                 <strong>{{$error}}</strong>
                             </div>
