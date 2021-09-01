@@ -42,7 +42,7 @@
                             </td>
                             <td>
 
-                                <img width="20" src="{{ asset('img/clubs-logos') }}/{{ $race->circuits->country }}.jpg" alt="">{{ $race->circuits->name }}
+                                <img width="20" src="{{ asset('img/flags') }}/{{ $race->circuits->country }}.png" alt="">{{ $race->circuits->name }}
 
                             </td>
                             <td>
