@@ -46,7 +46,9 @@
 
                             </td>
                             <td>
-                                {{ $race->started_at->format('M d Y') }}
+                                {{
+
+                                    \Carbon\Carbon::parse($race->started_at)->format('d.m.Y') }}
                             </td>
                             <td>
                                 <div style="color:green;">Nadcházející</div>
