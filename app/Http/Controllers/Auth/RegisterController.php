@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = './landing';
+    protected $redirectTo = '../landing';
 
     /**
      * Create a new controller instance.
