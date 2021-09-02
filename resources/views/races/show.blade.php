@@ -79,7 +79,13 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-xl-4">
                                             <img src="{{ asset('img/clubs-teams/single-team.jpg') }}" alt=""><br><br>
-                                            <button class="btn btn-primary">Přihlásit se do závodu</button>
+                                            @auth
+                                                @if($race->users->contains(auth()->user()))
+                                                    Jsi přihlášen v závodu
+                                                @else
+                                                    <a href="{{ route('races.join', $race) }}" class="btn btn-primary">Přihlásit se do závodu</a>
+                                                @endif
+                                            @endauth
                                         </div>
 
                                         <div class="col-lg-12 col-xl-8">
