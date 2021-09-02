@@ -80,6 +80,9 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="form-group"><br>
+                            <p><i>Registrací uživatel souhlasí se zpracováním osobních údajů GDPR.</i></p>
+                        </div>
                     </form>
                 </div>
             </div>
