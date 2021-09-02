@@ -1,20 +1,20 @@
 @extends('admin.layout.layout')
 
-@section('title', 'Seznam stránek')
+@section('title', 'Seznam článků')
 
 @section('content')
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Stránky</h3>
+        <h3 class="card-title">Závody</h3>
 
         <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                <i class="fas fa-times"></i>
-            </button>
+
+            <a class="btn btn-primary btn-sm" href="{{ url('admin/posts/create') }}">
+                <i class="fas fa-folder">
+                </i>
+                Přidat článek
+            </a>
         </div>
     </div>
     <div class="card-body p-0">
@@ -25,37 +25,37 @@
                     #
                 </th>
                 <th style="width: 20%">
-                    Název stránky
+                    Název článku
                 </th>
                 <th style="width: 20%">
-                    Slug
+                    Kategorie
                 </th>
                 <th style="width: 20%">
                 </th>
             </tr>
             </thead>
             <tbody>
-            @foreach($pages as $page)
+            @foreach($posts as $post)
             <tr>
                 <td>
-                    #{{ $page->id }}
+                    #{{ $post->id }}
                 </td>
                 <td>
-                    {{ $page->title }}
+                    {{ $post->title }}
                 </td>
                 <td>
                     <a>
-                        {{ $page->slug }}
+                        {{ $post->postcategory->name }}
                     </a>
                 </td>
                 <td class="project-actions text-right">
 
-                   <a class="btn btn-primary btn-sm" href="{{ url('page').'/'.$page->slug }}">
+                   <a class="btn btn-primary btn-sm" href="{{ url('posts').'/'.$post->slug }}">
                         <i class="fas fa-folder">
                         </i>
                         Zobrazit
                     </a>
-                    <a class="btn btn-info btn-sm" href="{{ route('admin.pages.edit', $page) }}">
+                    <a class="btn btn-info btn-sm" href="{{ route('admin.posts.edit', $post) }}">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Upravit

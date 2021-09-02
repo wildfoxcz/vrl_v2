@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Championship;
-use App\Race;
+use App\Post;
 use App\Circuit;
+use App\PostCategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 
-class RaceController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +20,10 @@ class RaceController extends Controller
      */
     public function index()
     {
-        $races = Race::with('championship')->get();
+        $posts = post::all();
+        $postcategory = PostCategory::all();
 
-        return view('admin.race.index', compact('races'));
+        return view('admin.post.index', compact('posts','postcategory'));
     }
 
     /**
@@ -34,7 +36,7 @@ class RaceController extends Controller
         $championships = Championship::all();
         $circuits = Circuit::all();
 
-        return view('admin.race.create_or_edit',
+        return view('admin.post.create_or_edit',
             compact(
                 'championships',
                 'circuits'
@@ -50,17 +52,17 @@ class RaceController extends Controller
     public function store(Request $request)
     {
         $this->store_or_update();
-        return redirect()->route('admin.races.index');
+        return redirect()->route('admin.posts.index');
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Race  $race
+     * @param  \App\Race  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Race $race)
+    public function show(Post $post)
     {
         //
     }
@@ -68,19 +70,19 @@ class RaceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Race  $race
+     * @param  \App\Race  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Race $race)
+    public function edit(Post $post)
     {
-        $championships = Championship::all();
+        $postcategories = PostCategory::all();
         $circuits = Circuit::all();
 
-        return view('admin.race.create_or_edit',
+        return view('admin.post.create_or_edit',
             compact(
-                'championships',
+                'postcategories',
                 'circuits',
-                'race'
+                'post'
             ));
     }
 
@@ -88,19 +90,19 @@ class RaceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Race  $race
+     * @param  \App\Race  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Race $race)
+    public function update(Request $request, Post $post)
     {
-        $this->store_or_update($race);
-        return redirect()->route('admin.races.index');
+        $this->store_or_update(post);
+        return redirect()->route('admin.posts.index');
     }
 
-    private function store_or_update(Race $race = null)
+    private function store_or_update(Post $post = null)
     {
-        if(is_null($race))
-            $race = new Race;
+        if(is_null($post))
+            $post = new Post ;
 
         $rules = [
             'name' => 'required|string',
@@ -115,23 +117,23 @@ class RaceController extends Controller
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
-            $race->$property = $value;
+            $post->$property = $value;
         }
 
-        $race->slug = \Illuminate\Support\Str::slug($race->name,'-');
+        $post->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
 
-        $race->save();
+        $post->save();
 
-        return $race;
+        return $post;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Race  $race
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Race $race)
+    public function destroy(Post $post)
     {
         //
     }

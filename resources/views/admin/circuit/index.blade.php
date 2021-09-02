@@ -1,12 +1,12 @@
 @extends('admin.layout.layout')
 
-@section('title', 'Seznam stránek')
+@section('title', 'Seznam okruhů')
 
 @section('content')
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Stránky</h3>
+        <h3 class="card-title">Okruhy</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -35,27 +35,27 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($pages as $page)
+            @foreach($circuits as $circuit)
             <tr>
                 <td>
-                    #{{ $page->id }}
+                    #{{ $circuit->id }}
                 </td>
                 <td>
-                    {{ $page->title }}
+                    {{ $circuit->name }}
                 </td>
                 <td>
                     <a>
-                        {{ $page->slug }}
+                        {{ $circuit->slug }}
                     </a>
                 </td>
                 <td class="project-actions text-right">
 
-                   <a class="btn btn-primary btn-sm" href="{{ url('page').'/'.$page->slug }}">
+                   <a class="btn btn-primary btn-sm" href="{{ url('circuits').'/'.$circuit->slug }}">
                         <i class="fas fa-folder">
                         </i>
                         Zobrazit
                     </a>
-                    <a class="btn btn-info btn-sm" href="{{ route('admin.pages.edit', $page) }}">
+                    <a class="btn btn-info btn-sm" href="{{ route('admin.circuits.edit', $circuit) }}">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Upravit
