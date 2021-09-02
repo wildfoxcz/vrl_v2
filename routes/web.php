@@ -67,6 +67,14 @@ Route::middleware('role:administrator')->group(function () {
         'update' => 'admin.circuits.update'
     ]);
 
+    Route::resource('/admin/users', 'Admin\\UserController')->names([
+        'index' => 'admin.users.index',
+        'create' => 'admin.users.create',
+        'store' => 'admin.users.store',
+        'edit' => 'admin.users.edit',
+        'update' => 'admin.users.update'
+    ]);
+
     Route::resource('/admin/championship', 'Admin\\ChampionshipController')->names([
         'index' => 'admin.championship.index',
         'create' => 'admin.championship.create',

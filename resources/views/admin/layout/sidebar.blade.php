@@ -64,7 +64,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/users') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Uživatelé
@@ -72,7 +72,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ url('admin/circuits') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Okruhy
