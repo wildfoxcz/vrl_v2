@@ -91,6 +91,13 @@
                                         <div class="col-lg-12 col-xl-8">
                                             <p>{!! $race->description !!}</p>
                                         </div>
+
+                                        @foreach($race->users as $user)
+                                            <tr>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->pivot->points }}</td>
+                                            </tr>
+                                        @endforeach
                                     </div>
                                 </div>
 
