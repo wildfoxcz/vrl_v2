@@ -34,6 +34,8 @@
                 </div>
 
                 <div class="card-body">
+                    {{ $errors }}
+
                     <div class="form-group">
                         <label for="inputName">Název závodu</label>
                         <input type="text" id="inputName" class="form-control" name="name" value="{{ old('name', $mode == 'edit' ? $race->name : null) }}">
@@ -122,6 +124,17 @@
                                 <strong>{{$error}}</strong>
                             </div>
                         @endforeach
+                    @endif
+
+                    @if($mode == 'edit')
+                    <table>
+                        @foreach($race->users as $user)
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td><input type="number" name="users[{{$user->id}}][points]" value="{{ $user->pivot->points }}" /></td>
+                            </tr>
+                        @endforeach
+                    </table>
                     @endif
                 </div>
                 <!-- /.card-body -->
