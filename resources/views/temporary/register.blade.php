@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Krajina') }}</label>
+                            <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Země') }}</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="country">
                                     @include('extensions.country')
