@@ -12,4 +12,10 @@ class PagesController extends Controller
             'posts'=> Post::with('user')->latest()->get(),
         ]);;
     }
+
+    public function inviteRegister(){
+        return view('temporary.register', [
+            'posts'=> Post::with('user')->latest()->get(),
+        ]);;
+    }
 }

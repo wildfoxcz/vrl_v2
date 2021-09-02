@@ -9,20 +9,16 @@ class CircuitController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $circuits = Page::all();
+        $circuits = Circuit::all();
 
         return view('admin.circuit.index', compact('circuits'));
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -32,60 +28,46 @@ class CircuitController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->store_or_update();
-        return redirect()->route('admin.pages.index');
+        return redirect()->route('admin.circuit.index');
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Race  $page
-     * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show(Circuit $circuit)
     {
         //
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Race  $page
-     * @return \Illuminate\Http\Response
      */
-    public function edit(Page $page)
+    public function edit(Circuit $circuit)
     {
 
-        return view('admin.page.create_or_edit',
-            );
+        return view('admin.circuit.create_or_edit', compact('circuit'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Race  $page
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(Request $request,Circuit $circuit)
     {
-        $this->store_or_update($page);
-        return redirect()->route('admin.pages.index');
+        $this->store_or_update($circuit);
+        return redirect()->route('admin.circuit.index');
     }
 
-    private function store_or_update(Page $page = null)
+    private function store_or_update(Circuit $circuit = null)
     {
-        if(is_null($page))
-            $page = new Page;
+        if(is_null($circuit))
+            $circuit = new Circuit();
 
         $rules = [
-            'title' => 'required|string',
+            'name' => 'required|string',
             'content' => 'required|string',
         ];
 
@@ -94,14 +76,14 @@ class CircuitController extends Controller
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
-            $page->$property = $value;
+            $circuit->$property = $value;
         }
 
-        $page->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
+        $circuit->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
 
-        $page->save();
+        $circuit->save();
 
-        return $page;
+        return $circuit;
     }
 
     /**

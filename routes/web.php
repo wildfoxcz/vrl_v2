@@ -20,7 +20,9 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/', 'PagesController@homepage');
 Route::get('/page/{slug}', array('as' => 'page.show', 'uses' => 'PageController@show'));
 
+// Temporary register
 
+Route::get('/temp/invite-register','PagesController@inviteRegister');
 // Races
 
 //Route::get('/races','RaceController@index');
@@ -55,6 +57,14 @@ Route::middleware('role:administrator')->group(function () {
         'store' => 'admin.pages.store',
         'edit' => 'admin.pages.edit',
         'update' => 'admin.pages.update'
+    ]);
+
+    Route::resource('/admin/circuits', 'Admin\\CircuitController')->names([
+        'index' => 'admin.circuits.index',
+        'create' => 'admin.circuits.create',
+        'store' => 'admin.circuits.store',
+        'edit' => 'admin.circuits.edit',
+        'update' => 'admin.circuits.update'
     ]);
 
     Route::resource('/admin/championship', 'Admin\\ChampionshipController')->names([
