@@ -94,6 +94,7 @@ class RaceController extends Controller
     public function update(Request $request, Race $race)
     {
         $this->store_or_update($race);
+
         return redirect()->route('admin.races.index');
     }
 
@@ -110,7 +111,12 @@ class RaceController extends Controller
             'circuit_id'  => 'required|exists:circuits,id',
         ];
 
-        $this->validate(request(), $rules);
+        $pivotRules = [
+            //'users'  => 'array|exists:users,id', // @todo
+            'users.*.points'  => 'required|integer',
+        ];
+
+        $this->validate(request(), $rules + $pivotRules);
 
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
@@ -119,6 +125,8 @@ class RaceController extends Controller
         }
 
         $race->slug = \Illuminate\Support\Str::slug($race->name,'-');
+
+        $race->users()->sync(request()->input('users'));
 
         $race->save();
 

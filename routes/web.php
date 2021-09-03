@@ -27,6 +27,7 @@ Route::get('/temp/invite-register','PagesController@inviteRegister');
 
 //Route::get('/races','RaceController@index');
 Route::resource('/races','RaceController');
+Route::get('/races/{race}/join','RaceController@join')->middleware('auth')->name('races.join');
 
 // Users
 

@@ -9,15 +9,7 @@
                 <div class="col-lg-12">
                     <div class="result-location">
                         <ul>
-                            <li>
-                                {{ $race->started_at }}
-                            </li>
 
-                            <li>
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                {{ $race->circuits->name}}
-                            </li>
-                            <li>Délka : {{ $race->circuits->circuit_length }} km</li>
                         </ul>
                     </div>
                 </div>
@@ -28,15 +20,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <div class="team">
-                        <h1><img width="70" height="46" src="{{ asset('img/flags') }}/{{ $race->circuits->country }}.png" alt="club-logo">
-                            {{ $race->name }}
-                        </h1>
-                        <ul>
-                            <li style="font-weight: normal; font-style: italic">Nejrýchlejší čas</li>
-                            <li>{{ $race->circuits->fastest_time }}</li>
-                            <li style="font-weight: normal; font-style: italic">Zatáček</li>
-                            <li>{{ $race->circuits->turns }}</li>
-                        </ul>
+
                     </div>
                 </div>
 
@@ -77,27 +61,24 @@
                                         <h4>O Závodu</h4>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-12 col-xl-4">
-                                            <img src="{{ asset('img/clubs-teams/single-team.jpg') }}" alt=""><br><br>
-                                            @auth
-                                                @if($race->users->contains(auth()->user()))
-                                                    Jsi přihlášen v závodu
-                                                @else
-                                                    <a href="{{ route('races.join', $race) }}" class="btn btn-primary">Přihlásit se do závodu</a>
-                                                @endif
-                                            @endauth
-                                        </div>
-
-                                        <div class="col-lg-12 col-xl-8">
-                                            <p>{!! $race->description !!}</p>
-                                        </div>
-
-                                        @foreach($race->users as $user)
+                                        <table>
+                                        @foreach($championship->teams as $team)
                                             <tr>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->pivot->points }}</td>
+                                                <td>{{ $team->name }}</td>
+                                                @foreach($championship->races as $race)
+                                                    <td>@todo</td>
+                                                @endforeach
+                                                <td>@todo</td>
                                             </tr>
+                                            @foreach($team->users as $user)
+                                                <td>{{ $user->name }}</td>
+                                                @foreach($championship->races as $race)
+                                                    <td>{{ $race->users()->get($user->id)->pivot->points }}</td>
+                                                @endforeach
+                                            @endforeach
+                                            <td>@todo</td>
                                         @endforeach
+                                        </table>
                                     </div>
                                 </div>
 

@@ -32,12 +32,12 @@
                                             10
                                         </span>-->
                             <h4>
-                                {{ $user->name }}
-                                <span>Členem od: {{ \Carbon\Carbon::parse($user->created_at)->diffForHumans() }}</span>
+                                {{ $user->user_detail->name }}
+                                <span>Registrovaný od: {{ \Carbon\Carbon::parse($user->created_at)->format('d.m.Y') }}</span>
                             </h4>
                             <ul>
                                 <li>
-                                    <strong>CLUB NAME:</strong> <span><img src="img/clubs-logos/colombia.png" alt=""> Colombia </span
+                                    <strong>Bydliště:</strong> <span><img src="{{ asset('img/flags') }}/{{ $user->user_detail->country }}.png" alt=""> {{ $user->user_detail->city }} </span>
                                 </li>
                                 <li><strong>Pohlaví:</strong>
                                     @if($user->user_detail->sex == 1)
@@ -46,12 +46,9 @@
                                     <span>Žena</span></li>
                                     @endif
                                 <li><strong>Věk:</strong> <span>{{ \Carbon\Carbon::parse($user->user_detail->birthday)->diff(\Carbon\Carbon::now())->format('%y let') }}</span></li>
-                                <li><strong>Goals:</strong> <span>108</span></li>
-                                <li><strong>Discipline:</strong> <span>4 fouls against</span></li>
-                                <li><strong>Passing:</strong> <span>40 free kicks</span></li>
                             </ul>
 
-                            <h6>Follow Jamez Rodriguez</h6>
+                            <h6>Sociální sítě</h6>
 
                             <ul class="social-player">
                                 <li>
@@ -79,7 +76,7 @@
                         </div>
                     </div>
 
-                    <!-- Attack -->
+<!--                     Attack
                     <div class="panel-box">
                         <div class="titles no-margin">
                             <h4><i class="fa fa-user"></i>Personal Info</h4>
@@ -92,16 +89,16 @@
                             <li><p>Date of Birth <span>March 5th, 1989</span></p></li>
                         </ul>
                     </div>
-                    <!-- End Attack -->
+                     End Attack -->
                 </div>
                 <!-- end Side info single team-->
 
                 <div class="col-lg-8 col-xl-9">
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs" id="myTab">
-                        <li class="active"><a href="#overview" data-toggle="tab">Overview</a></li>
-                        <li><a href="#career" data-toggle="tab">CAREER</a></li>
-                        <li><a href="#stats" data-toggle="tab">STATS</a></li>
+                        <li class="active"><a href="#overview" data-toggle="tab">Základní informace</a></li>
+                        <li><a href="#" data-toggle="tab">Kariéra</a></li>
+                        <li><a href="#" data-toggle="tab">Statistiky</a></li>
                     </ul>
                     <!-- End Nav Tabs -->
 
@@ -112,147 +109,14 @@
 
                             <div class="panel-box padding-b">
                                 <div class="titles">
-                                    <h4>Jamez overview</h4>
+                                    <h4>O mně</h4>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-12 col-xl-4">
-                                        <img src="img/clubs-teams/single-team.jpg" alt="">
-                                    </div>
-
-                                    <div class="col-lg-12 col-xl-8">
-                                        <p>The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in international football competitions and is overseen by the Colombian Football Federation. It is a member of the CONMEBOL and is currently ranked thirteenth in the FIFA World Rankings.[3] The team are nicknamed Los Cafeteros due to the coffee production in their country.</p>
-
-                                        <p>Since the mid-1980s, the national team has been a symbol fighting the country's negative reputation. This has made the sport popular and made the national team a sign of nationalism, pride and passion for many Colombians worldwide.</p>
+                                    <div style="padding-left: 40px; padding-right: 30px" class="col-lg-12 col-xl-12">
+                                        {!! $user->user_detail->description !!}
                                     </div>
                                 </div>
                             </div>
-
-                            <!--Items Club News -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3 class="clear-title">Latest Player News</h3>
-                                </div>
-
-                                <!--Item Club News -->
-                                <div class="col-lg-6 col-xl-4">
-                                    <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">World football's dates.</a></h4>
-                                        </div>
-                                        <a href="#"><img src="img/blog/1.jpg" alt=""></a>
-                                        <div class="row">
-                                            <div class="info-panel">
-                                                <p>Fans from all around the world can apply for 2018 FIFA World Cup™ tickets as the first window of sales.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Widget Text-->
-                                </div>
-                                <!--End Item Club News -->
-
-                                <!--Item Club News -->
-                                <div class="col-lg-6 col-xl-4">
-                                    <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">Mbappe’s year to remember</a></h4>
-                                        </div>
-                                        <a href="#"><img src="img/blog/2.jpg" alt=""></a>
-                                        <div class="row">
-                                            <div class="info-panel">
-                                                <p>Tickets may be purchased online by using Visa payment cards or Visa Checkout. Visa is the official.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Widget Text-->
-                                </div>
-                                <!--End Item Club News -->
-
-                                <!--Item Club News -->
-                                <div class="col-lg-6 col-xl-4">
-                                    <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">Egypt are one family</a></h4>
-                                        </div>
-                                        <a href="#"><img src="img/blog/3.jpg" alt=""></a>
-                                        <div class="row">
-                                            <div class="info-panel">
-                                                <p>Successful applicants who have applied for supporter tickets and conditional supporter tickets will.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Widget Text-->
-                                </div>
-                                <!--End Item Club News -->
-                            </div>
-                            <!--End Items Club News -->
-
-
-                            <!--Items Club video -->
-                            <div class="row no-line-height">
-                                <div class="col-md-12">
-                                    <h3 class="clear-title">Latest Player Videos</h3>
-                                </div>
-
-                                <!--Item Club News -->
-                                <div class="col-lg-6 col-xl-4">
-                                    <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">Eliminatory to the world.</a></h4>
-                                        </div>
-                                        <iframe class="video" src="https://www.youtube.com/embed/Ln8rXkeeyP0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-                                    </div>
-                                    <!-- End Widget Text-->
-                                </div>
-                                <!--End Item Club News -->
-
-                                <!--Item Club News -->
-                                <div class="col-lg-6 col-xl-4">
-                                    <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">Colombia classification</a></h4>
-                                        </div>
-                                        <iframe class="video" src="https://www.youtube.com/embed/Z5cackyUfgk" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-                                    </div>
-                                    <!-- End Widget Text-->
-                                </div>
-                                <!--End Item Club News -->
-
-                                <!--Item Club News -->
-                                <div class="col-lg-6 col-xl-4">
-                                    <!-- Widget Text-->
-                                    <div class="panel-box">
-                                        <div class="titles no-margin">
-                                            <h4><a href="#">World Cup goal</a></h4>
-                                        </div>
-                                        <iframe class="video" src="https://www.youtube.com/embed/hW3hnUoUS0k" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-                                    </div>
-                                    <!-- End Widget Text-->
-                                </div>
-                                <!--End Item Club News -->
-                            </div>
-                            <!--End Items Club video -->
-
-                            <!--Sponsors CLub -->
-                            <div class="row no-line-height">
-                                <div class="col-md-12">
-                                    <h3 class="clear-title">Sponsors Player</h3>
-                                </div>
-                            </div>
-                            <!--End Sponsors CLub -->
-
-                            <ul class="sponsors-carousel">
-                                <li><a href="#"><img src="img/sponsors/1.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/sponsors/2.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/sponsors/3.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/sponsors/4.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/sponsors/5.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/sponsors/3.png" alt=""></a></li>
-                            </ul>
 
                         </div>
                         <!-- Tab One - overview -->
@@ -509,45 +373,6 @@
         </div>
     </div>
     <!-- Single Team Tabs -->
-
-    <!-- Newsletter -->
-    <div class="section-newsletter">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="text-center">
-                        <h2>Enter your e-mail and <span class="text-resalt">subscribe</span> to our newsletter.</h2>
-                        <p>Duis non lorem porta,  eros sit amet, tempor sem. Donec nunc arcu, semper a tempus et, consequat.</p>
-                    </div>
-                    <form id="newsletterForm" action="php/mailchip/newsletter-subscribe.php">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-envelope"></i>
-                                                </span>
-                                    <input class="form-control" placeholder="Your Name" name="name"  type="text" required="required">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-envelope"></i>
-                                                </span>
-                                    <input class="form-control" placeholder="Your  Email" name="email"  type="email" required="required">
-                                    <span class="input-group-btn">
-                                                    <button class="btn btn-primary" type="submit" name="subscribe" >SIGN UP</button>
-                                                 </span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <div id="result-newsletter"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Newsletter -->
 </section>
 <!-- End Section Area -  Content Central -->
 @endsection

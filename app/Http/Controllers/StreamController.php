@@ -2,27 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Race;
-use App\Championship;
-
-
+use App\Stream;
 use Illuminate\Http\Request;
 
-class RaceController extends Controller
+class StreamController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
-        return view('races.index', [
-            'races'=> Race::doesntHave("Championship")->with('users')->get()
-        ]);
+        //
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -48,21 +41,21 @@ class RaceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Race  $race
+     * @param  \App\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function show(Race $race)
+    public function show(Stream $stream)
     {
-        return view('races.show',compact('race'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Race  $race
+     * @param  \App\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function edit(Race $race)
+    public function edit(Stream $stream)
     {
         //
     }
@@ -71,10 +64,10 @@ class RaceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Race  $race
+     * @param  \App\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Race $race)
+    public function update(Request $request, Stream $stream)
     {
         //
     }
@@ -82,17 +75,11 @@ class RaceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Race  $race
+     * @param  \App\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Race $race)
+    public function destroy(Stream $stream)
     {
         //
-    }
-
-    public function join(Race $race)
-    {
-        $race->users()->attach(auth()->user(), ['points' => 420]); // @todo , ['points' => 420] dej do pici a nastav points at muze byt nullable v db
-        return redirect()->back();
     }
 }
