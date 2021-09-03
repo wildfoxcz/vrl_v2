@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostCategoriesTable extends Migration
+class CreateStreamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePostCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_categories', function (Blueprint $table) {
+        Schema::create('streams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name','200')->nullable();
-            $table->string('image','200')->nullable();
-            $table->string('slug','200')->nullable();
+            $table->string('name','200');
+            $table->string('slug','200');
+            $table->string('video_url','200');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePostCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_categories');
+        Schema::dropIfExists('streams');
     }
 }
