@@ -29,6 +29,11 @@ class User extends Authenticatable
         return $this->role->searchInHiearchy($requiredRole);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
     use Notifiable;
 
     protected $fillable = [

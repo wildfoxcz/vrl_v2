@@ -27,13 +27,13 @@
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Nástěnka
-                            <i class="right fas fa-angle-left"></i>
+
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('admin/pages') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-file"></i>
                         <p>
                             Stránky
                         </p>
@@ -41,7 +41,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('admin/races') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-route"></i>
                         <p>
                             Závody
                         </p>
@@ -49,7 +49,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('admin/championship') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-trophy"></i>
                         <p>
                             Šampionáty
                         </p>
@@ -57,7 +57,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-flag-checkered"></i>
                         <p>
                             Výsledky
                         </p>
@@ -65,7 +65,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('admin/users') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
                             Uživatelé
                         </p>
@@ -73,7 +73,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('admin/circuits') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-circle-notch"></i>
                         <p>
                             Okruhy
                         </p>
@@ -81,9 +81,17 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('admin/posts') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             Články
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('admin/teams') }}" class="nav-link">
+                        <i class="nav-icon fas fa-sitemap"></i>
+                        <p>
+                            Týmy
                         </p>
                     </a>
                 </li>
