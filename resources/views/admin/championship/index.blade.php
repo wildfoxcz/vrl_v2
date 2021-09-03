@@ -59,13 +59,9 @@
                 <td class="project-actions text-right">
 
                    <a class="btn btn-primary btn-sm" href="{{ url('pages').'/'.$championship->slug }}">
-                        <i class="fas fa-folder">
-                        </i>
                         Zobrazit
                     </a>
-                    <a class="btn btn-info btn-sm" href="{{ route('admin.pages.edit', $championship) }}">
-                        <i class="fas fa-pencil-alt">
-                        </i>
+                    <a class="btn btn-info btn-sm" href="{{ route('admin.championship.edit', $championship) }}">
                         Upravit
                     </a>
 <!--                    <a class="btn btn-danger btn-sm" href="#">

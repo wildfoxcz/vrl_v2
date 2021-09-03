@@ -68,7 +68,7 @@
             @endguest
             @auth
                 <li>
-                    <a href="{{ url('/profile') }}">Můj profil</a>
+                    <a href="{{ url('/users') }}/{{ auth()->user()->name }}">Můj profil</a>
                 </li>
 
                 @if(auth()->user()->isAuthorised('administrator'))
@@ -87,3 +87,4 @@
     </div>
 </nav>
 <!-- End mainmenu-->
+

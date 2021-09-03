@@ -1,18 +1,16 @@
 @extends('admin.layout.layout')
 
-@section('title', 'Seznam článků')
+@section('title', 'Články')
 
 @section('content')
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Závody</h3>
+        <h3 class="card-title">Seznam článků</h3>
 
         <div class="card-tools">
 
             <a class="btn btn-primary btn-sm" href="{{ url('admin/posts/create') }}">
-                <i class="fas fa-folder">
-                </i>
                 Přidat článek
             </a>
         </div>
@@ -27,8 +25,14 @@
                 <th style="width: 20%">
                     Název článku
                 </th>
-                <th style="width: 20%">
+                <th style="width: 10%">
                     Kategorie
+                </th>
+                <th style="width:10%">
+                    Vytvořeno
+                </th>
+                <th style="width: 20%">
+                    Slug
                 </th>
                 <th style="width: 20%">
                 </th>
@@ -45,26 +49,26 @@
                 </td>
                 <td>
                     <a>
-                        {{ $post->postcategory->name }}
+                        {{ $post->postcategories->name }}
                     </a>
+                </td>
+                <td>
+                    {{ \Carbon\Carbon::parse($post->created_at)->format('d.m.Y h:m') }}
+                </td>
+                <td>
+                    {{ $post->slug }}
                 </td>
                 <td class="project-actions text-right">
 
                    <a class="btn btn-primary btn-sm" href="{{ url('posts').'/'.$post->slug }}">
-                        <i class="fas fa-folder">
-                        </i>
                         Zobrazit
                     </a>
                     <a class="btn btn-info btn-sm" href="{{ route('admin.posts.edit', $post) }}">
-                        <i class="fas fa-pencil-alt">
-                        </i>
                         Upravit
                     </a>
-<!--                    <a class="btn btn-danger btn-sm" href="#">
-                        <i class="fas fa-trash">
-                        </i>
-                        Delete
-                    </a>-->
+               <a class="btn btn-danger btn-sm" href="#">
+                        Smazat
+                    </a>
                 </td>
             </tr>
             @endforeach

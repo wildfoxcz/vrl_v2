@@ -1,5 +1,5 @@
 <?php
-if(isset($race))
+if(isset($post))
     $mode = 'edit';
 else
     $mode = 'create';
@@ -14,120 +14,98 @@ $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' článek';
 @section('content')
     <!-- Default box -->
     @if($mode == 'edit')
-        <form action="{{ route('admin.races.update', $race) }}" method="post">
+        <form action="{{ route('admin.posts.update', $post) }}" method="post">
             @method('patch')
             @else
-                <form action="{{ route('admin.races.store') }}" method="post">
+                <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                     @endif
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Obecné</h3>
+                                    <h3 class="card-title">Základní informace</h3>
 
                                     <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
+
                                     </div>
                                 </div>
 
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="inputName">Název závodu</label>
-                                        <input type="text" id="inputName" class="form-control" name="name" value="{{ old('name', $mode == 'edit' ? $race->name : null) }}">
+                                        <label for="inputName">Název článku</label>
+                                        <input type="text" id="inputName" class="form-control" name="title" value="{{ old('title', $mode == 'edit' ? $post->title : null) }}">
                                     </div>
-                                    @if ($errors->has("name"))
-                                        @foreach ($errors->get("name") as $error)
+                                    @if ($errors->has("title"))
+                                        @foreach ($errors->get("title") as $error)
                                             <div class="errorMessage"> <!-- @todo find class for errors in adminLTE -->
                                                 <strong>{{$error}}</strong>
                                             </div>
                                         @endforeach
                                     @endif
                                     <div class="form-group">
-                                        <label for="inputDescription">Popis závodu</label>
-                                        <textarea id="inputDescription" class="ckeditor form-control" rows="4" name="description">{{ old('description', $mode == 'edit' ? $race->description : null) }}</textarea>
-                                        <script type="text/javascript">
-                                            CKEDITOR.replace('description', {
-                                                filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
-                                                filebrowserUploadMethod: 'form'
-                                            });
-                                        </script>
+                                        <label for="exampleInputFile">Obrázek</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="image" name="image">
+                                                <label class="custom-file-label" for="exampleInputFile">vyberte soubor</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    @if ($errors->has("description"))
-                                        @foreach ($errors->get("description") as $error)
+                                    <div class="form-group">
+                                        <label for="inputStatus">Kategorie</label>
+                                        <select id="inputStatus" class="form-control custom-select" name="category_id">
+                                            <option value="">Vybrat</option>
+                                            @foreach($postcategories as $postcategory)
+                                                <option
+                                                    value="{{$postcategory->id}}"
+                                                    {{ old('category_id', $mode == 'edit' ? $post->category_id : null) == $postcategory->id ? 'selected' : '' }}
+                                                >{{$postcategory->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @if ($errors->has("category_id"))
+                                        @foreach ($errors->get("category_id") as $error)
                                             <div class="errorMessage">
                                                 <strong>{{$error}}</strong>
                                             </div>
                                         @endforeach
                                     @endif
                                     <div class="form-group">
-                                        <label for="inputStartTime">Začátek závodu</label>
-                                        <div class="input-group date" id="startdatetime" data-target-input="nearest">
-                                            <input type="text"
-                                                   class="form-control datetimepicker-input"
-                                                   data-target="#startdatetime"
-                                                   id="inputStartTime"
-                                                   name="started_at"
-                                                   value="{{ old('started_at', $mode == 'edit' ? $race->started_at : null) }}"
-                                            />
-                                            <div class="input-group-append" data-target="#startdatetime" data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
+                                        <label for="inputDescription">Stručný popis</label>
+                                        <textarea id="inputDescription" class="form-control" rows="4" name="short_desc">{{ old('short_desc', $mode == 'edit' ? $post->short_desc : null) }}</textarea>
                                     </div>
-                                    @if ($errors->has("started_at"))
-                                        @foreach ($errors->get("started_at") as $error)
+                                    @if ($errors->has("short_desc"))
+                                        @foreach ($errors->get("short_desc") as $error)
+                                            <div class="errorMessage">
+                                                <strong>{{$error}}</strong>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                    <div class="form-group">
+                                        <label for="inputDescription">Celý text</label>
+                                        <textarea id="inputDescription" class="ckeditor form-control" rows="4" name="long_desc">{{ old('long_desc', $mode == 'edit' ? $post->long_desc : null) }}</textarea>
+                                        <script type="text/javascript">
+                                            CKEDITOR.replace('long_desc', {
+                                                filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+                                                filebrowserUploadMethod: 'form'
+                                            });
+                                        </script>
+                                    </div>
+                                    @if ($errors->has("long_desc"))
+                                        @foreach ($errors->get("long_desc") as $error)
                                             <div class="errorMessage">
                                                 <strong>{{$error}}</strong>
                                             </div>
                                         @endforeach
                                     @endif
 
-                                    <div class="form-group">
-                                        <label for="inputStatus">Šampionát</label>
-                                        <select id="inputStatus" class="form-control custom-select" name="championship_id">
-                                            <option value="">Vybrat</option>
-                                            @foreach($championships as $championship)
-                                                <option
-                                                    value="{{$championship->id}}"
-                                                    {{ old('championship_id', $mode == 'edit' ? $race->championship_id : null) == $championship->id ? 'selected' : '' }}
-                                                >{{$championship->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    @if ($errors->has("championship_id"))
-                                        @foreach ($errors->get("championship_id") as $error)
-                                            <div class="errorMessage">
-                                                <strong>{{$error}}</strong>
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                    <div class="form-group">
-                                        <label for="inputStatus">Okruh</label>
-                                        <select id="inputStatus" class="form-control custom-select" name="circuit_id">
-                                            <option disabled value="">Vybrat</option>
-                                            @foreach($circuits as $circuit)
-                                                <option
-                                                    value="{{$circuit->id}}"
-                                                    {{ old('circuit_id', $mode == 'edit' ? $race->circuit_id : null) == $circuit->id ? 'selected' : '' }}
-                                                >{{$circuit->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    @if ($errors->has("circuit_id"))
-                                        @foreach ($errors->get("circuit_id") as $error)
-                                            <div class="errorMessage">
-                                                <strong>{{$error}}</strong>
-                                            </div>
-                                        @endforeach
-                                    @endif
                                 </div>
                                 <!-- /.card-body -->
                             </div>
                             <!-- /.card -->
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-12">
@@ -147,12 +125,4 @@ $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' článek';
                 <script src="{{ asset('/js/moment/moment.min.js') }}"></script>
                 <!-- Tempusdominus Bootstrap 4 -->
                 <script src="{{ asset('/js/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js') }}"></script>
-                <script>
-                    $(function () {
-                        $('#startdatetime').datetimepicker({
-                            icons: { time: 'far fa-clock' },
-                            format: 'YYYY-MM-DD kk:mm:ss'
-                        });
-                    });
-                </script>
-@endsection
+
