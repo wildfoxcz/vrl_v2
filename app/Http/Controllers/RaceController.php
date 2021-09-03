@@ -89,4 +89,10 @@ class RaceController extends Controller
     {
         //
     }
+
+    public function join(Race $race)
+    {
+        $race->users()->attach(auth()->user(), ['points' => 420]); // @todo , ['points' => 420] dej do pici a nastav points at muze byt nullable v db
+        return redirect()->back();
+    }
 }
