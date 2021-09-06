@@ -103,9 +103,8 @@ class PostController extends Controller
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
             $post->$property = $value;
-            $post->user_id = auth()->id();
         }
-
+        $post->user_id = auth()->id();
         $post->slug = \Illuminate\Support\Str::slug($post->title,'-');
 
         $post->save();
