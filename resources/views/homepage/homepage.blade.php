@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="img-hover">
-                                        <img src="img/blog/{{ $post->image }}" alt="" class="img-responsive">
+                                        <img src="images/posts/{{ $post->image }}" alt="" class="img-responsive">
                                         <div class="overlay"><a href="single-news.html">+</a></div>
                                     </div>
                                 </div>

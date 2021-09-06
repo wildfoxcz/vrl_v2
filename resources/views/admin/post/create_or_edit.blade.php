@@ -21,7 +21,7 @@ $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' článek';
                     @endif
                     @csrf
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="card card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title">Základní informace</h3>
@@ -100,6 +100,27 @@ $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' článek';
                                         @endforeach
                                     @endif
 
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div><div class="col-md-6">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Základní informace</h3>
+
+                                    <div class="card-tools">
+
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Stávající obrázek</label>
+                                        <div class="input-group">
+                                            <img src="{{ url('images/posts')}}/{{ old('image', $mode == 'edit' ? $post->image : null) }}" alt="">
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

@@ -58,7 +58,7 @@
         <div id="hero-slider" class="hero-slider">
             @foreach ($posts as $post)
             <!-- Item Slide-->
-            <div class="item-slider" style="background:url(img/blog/{{ $post->image }});">
+            <div class="item-slider" style="background:url(images/posts/{{ $post->image }});">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-7">

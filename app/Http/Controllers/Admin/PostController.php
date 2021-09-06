@@ -82,8 +82,8 @@ class PostController extends Controller
         ];
 
         $this->validate(request(), $rules);
-
-        /*//Upload image
+        $request = request();
+        //Upload image
         if($request->hasFile('image')){
             $image_tmp = $request->file('image');
             if($image_tmp->isValid()){
@@ -98,13 +98,12 @@ class PostController extends Controller
                 $post->image = $imageName;
             }
         }
-*/
+
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
             $post->$property = $value;
             $post->user_id = auth()->id();
-            $post->image = "image.jpg";
         }
 
         $post->slug = \Illuminate\Support\Str::slug($post->title,'-');
