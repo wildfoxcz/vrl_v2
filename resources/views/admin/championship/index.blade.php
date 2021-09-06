@@ -9,12 +9,9 @@
         <h3 class="card-title">Šampionáty</h3>
 
         <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                <i class="fas fa-times"></i>
-            </button>
+            <a class="btn btn-primary btn-sm" href="{{ url('admin/championship/create') }}">
+                Přidat šampionát
+            </a>
         </div>
     </div>
     <div class="card-body p-0">
@@ -48,12 +45,16 @@
                 </td>
                 <td>
                     <a>
-                        {{ $championship->description }}
+                        {{ $championship->slug }}
                     </a>
                 </td>
                 <td>
                     <a>
-                        {{ $championship->is_active }}
+                        @if($championship->is_active == "1")
+                            Aktivní
+                        @else
+                            Neaktivní
+                        @endif
                     </a>
                 </td>
                 <td class="project-actions text-right">

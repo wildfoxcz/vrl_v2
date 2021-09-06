@@ -3,18 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Championship;
-use App\Page;
-use App\Circuit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Str;
 
 class ChampionshipController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -25,8 +21,6 @@ class ChampionshipController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -36,9 +30,6 @@ class ChampionshipController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -48,9 +39,6 @@ class ChampionshipController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Race  $championship
-     * @return \Illuminate\Http\Response
      */
     public function show(Championship $championship)
     {
@@ -59,23 +47,15 @@ class ChampionshipController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  \App\Race  $championship
-     * @return \Illuminate\Http\Response
      */
     public function edit(Championship $championship)
     {
 
-        return view('admin.championship.create_or_edit','championship'
-            );
+        return view('admin.championship.create_or_edit', compact('championship'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Race  $championship
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Championship $championship)
     {
@@ -86,7 +66,7 @@ class ChampionshipController extends Controller
     private function store_or_update(Championship $championship = null)
     {
         if(is_null($championship))
-            $championship = new Championship ;
+            $championship = new Championship();
 
         $rules = [
             'name' => 'required|string',
@@ -101,7 +81,7 @@ class ChampionshipController extends Controller
             $championship->$property = $value;
         }
 
-        $championship->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
+        $championship->slug = \Illuminate\Support\Str::slug($championship->name,'-');
 
         $championship->save();
 
@@ -110,9 +90,6 @@ class ChampionshipController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Race  $championship
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Championship $championship)
     {

@@ -5,9 +5,6 @@
 <div class="section-title single-player" style="background:url(img/slide/3.jpg)">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <h1>{{ $user->name }}</h1>
-            </div>
         </div>
     </div>
 </div>
@@ -32,20 +29,14 @@
                                             10
                                         </span>-->
                             <h4>
-                                {{ $user->user_detail->name }}
-                                <span>Registrovaný od: {{ \Carbon\Carbon::parse($user->created_at)->format('d.m.Y') }}</span>
+                                {{ $user->name }}
+
                             </h4>
                             <ul>
-                                <li>
-                                    <strong>Bydliště:</strong> <span><img src="{{ asset('img/flags') }}/{{ $user->user_detail->country }}.png" alt=""> {{ $user->user_detail->city }} </span>
-                                </li>
-                                <li><strong>Pohlaví:</strong>
-                                    @if($user->user_detail->sex == 1)
-                                    <span>Muž</span></li>
-                                    @else
-                                    <span>Žena</span></li>
-                                    @endif
+                                <li><strong>Jméno:</strong><span>{{ $user->user_detail->name }}</span></li>
+                                <li><strong>Národnost:</strong> <span><img src="{{ asset('img/flags') }}/{{ $user->user_detail->country }}.png" alt=""></span>
                                 <li><strong>Věk:</strong> <span>{{ \Carbon\Carbon::parse($user->user_detail->birthday)->diff(\Carbon\Carbon::now())->format('%y let') }}</span></li>
+                                <li><strong>Registrovaný od:</strong> <span>{{ \Carbon\Carbon::parse($user->created_at)->format('d.m.Y') }}</span></li>
                             </ul>
 
                             <h6>Sociální sítě</h6>
@@ -55,13 +46,6 @@
                                     <div>
                                         <a href="#" class="facebook">
                                             <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#" class="twitter-icon">
-                                            <i class="fa fa-twitter"></i>
                                         </a>
                                     </div>
                                 </li>
@@ -97,8 +81,8 @@
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="active"><a href="#overview" data-toggle="tab">Základní informace</a></li>
-                        <li><a href="#" data-toggle="tab">Kariéra</a></li>
-                        <li><a href="#" data-toggle="tab">Statistiky</a></li>
+                   <li><a href="#" data-toggle="tab">Herní vybavení</a></li>
+                        <!--      <li><a href="#" data-toggle="tab">Statistiky</a></li>-->
                     </ul>
                     <!-- End Nav Tabs -->
 

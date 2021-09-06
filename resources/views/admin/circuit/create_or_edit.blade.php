@@ -21,16 +21,10 @@
 @endif
     @csrf
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Obecné</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
                 </div>
 
                 <div class="card-body">
@@ -46,11 +40,11 @@
                         @endforeach
                     @endif
                     <div class="form-group">
-                        <label for="inputName">Youtube URL</label>
-                        <input type="text" id="inputName" class="form-control" name="youtube" value="{{ old('youtube', $mode == 'edit' ? $circuit->youtube : null) }}">
+                        <label for="inputName">Počet zatáček</label>
+                        <input type="text" id="inputName" class="form-control" name="turns" value="{{ old('turns', $mode == 'edit' ? $circuit->turns : null) }}">
                     </div>
-                    @if ($errors->has("youtube"))
-                        @foreach ($errors->get("youtube") as $error)
+                    @if ($errors->has("turns"))
+                        @foreach ($errors->get("turns") as $error)
                             <div class="errorMessage"> <!-- @todo find class for errors in adminLTE -->
                                 <strong>{{$error}}</strong>
                             </div>
@@ -62,6 +56,42 @@
                     </div>
                     @if ($errors->has("circuit_length"))
                         @foreach ($errors->get("circuit_length") as $error)
+                            <div class="errorMessage"> <!-- @todo find class for errors in adminLTE -->
+                                <strong>{{$error}}</strong>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Ostatní</h3>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="inputName">Nejrychlejší čas</label>
+                        <input type="text" id="inputName" class="form-control" name="fastest_time" value="{{ old('fastest_time', $mode == 'edit' ? $circuit->fastest_time : null) }}">
+                    </div>
+                    @if ($errors->has("fastest_time"))
+                        @foreach ($errors->get("fastest_time") as $error)
+                            <div class="errorMessage"> <!-- @todo find class for errors in adminLTE -->
+                                <strong>{{$error}}</strong>
+                            </div>
+                        @endforeach
+                    @endif
+                    <div class="form-group">
+                        <label for="inputName">Lokalita</label>
+                        <select id="inputStatus" class="form-control custom-select" name="country">
+                            @include('extensions.country')
+                        </select>
+                    </div>
+                    @if ($errors->has("country"))
+                        @foreach ($errors->get("country") as $error)
                             <div class="errorMessage"> <!-- @todo find class for errors in adminLTE -->
                                 <strong>{{$error}}</strong>
                             </div>

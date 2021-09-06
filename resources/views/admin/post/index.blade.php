@@ -9,7 +9,6 @@
         <h3 class="card-title">Seznam článků</h3>
 
         <div class="card-tools">
-
             <a class="btn btn-primary btn-sm" href="{{ url('admin/posts/create') }}">
                 Přidat článek
             </a>

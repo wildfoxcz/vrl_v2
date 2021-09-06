@@ -107,8 +107,9 @@ class PostController extends Controller
         $post->user_id = auth()->id();
         $post->slug = \Illuminate\Support\Str::slug($post->title,'-');
 
-        $post->save();
 
+        $post->save();
+        dd($post);
         return $post;
     }
 

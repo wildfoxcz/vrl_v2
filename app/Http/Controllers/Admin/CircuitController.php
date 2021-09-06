@@ -58,7 +58,7 @@ class CircuitController extends Controller
     public function update(Request $request,Circuit $circuit)
     {
         $this->store_or_update($circuit);
-        return redirect()->route('admin.circuit.index');
+        return redirect()->route('admin.circuits.index');
     }
 
     private function store_or_update(Circuit $circuit = null)
@@ -68,7 +68,7 @@ class CircuitController extends Controller
 
         $rules = [
             'name' => 'required|string',
-            'content' => 'required|string',
+            'country' => 'required',
         ];
 
         $this->validate(request(), $rules);
@@ -79,7 +79,7 @@ class CircuitController extends Controller
             $circuit->$property = $value;
         }
 
-        $circuit->slug = \Illuminate\Support\Str::random(30); // @todo Use slug function
+        $circuit->slug = \Illuminate\Support\Str::slug($circuit->name,'-');
 
         $circuit->save();
 

@@ -57,7 +57,7 @@
         <div class="titles no-margin">
             <h4>Discord</h4>
         </div>
-        <a href="http://themeforest.net/user/iwthemes/portfolio?ref=iwthemes" target="_blank">
+        <a href="https://discord.gg/aJGU4PE4YC" target="_blank">
             <img src="{{ asset('img/adds/discord.jpg') }}" class="img-responsive" alt="">
         </a>
     </div>

@@ -44,7 +44,7 @@ $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' článek';
                                         @endforeach
                                     @endif
                                     <div class="form-group">
-                                        <label for="exampleInputFile">Obrázek</label>
+                                        <label for="image">Obrázek</label>
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="image" name="image">
