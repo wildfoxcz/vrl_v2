@@ -49,7 +49,7 @@ class CircuitController extends Controller
     public function edit(Circuit $circuit)
     {
 
-        return view('admin.circuit.create_or_edit', compact('circuit'));
+        return view('admin.circuits.create_or_edit', compact('circuit'));
     }
 
     /**
