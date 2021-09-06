@@ -32,7 +32,7 @@ class CircuitController extends Controller
     public function store(Request $request)
     {
         $this->store_or_update();
-        return redirect()->route('admin.circuit.index');
+        return redirect()->route('admin.circuits.index');
     }
 
     /**
@@ -49,7 +49,7 @@ class CircuitController extends Controller
     public function edit(Circuit $circuit)
     {
 
-        return view('admin.circuits.create_or_edit', compact('circuit'));
+        return view('admin.circuit.create_or_edit', compact('circuit'));
     }
 
     /**
@@ -69,7 +69,12 @@ class CircuitController extends Controller
         $rules = [
             'name' => 'required|string',
             'country' => 'required',
+            'turns' => 'required',
+            'fastest_time' => 'required',
+            'circuit_length' => 'required',
         ];
+
+
 
         $this->validate(request(), $rules);
 
@@ -80,7 +85,6 @@ class CircuitController extends Controller
         }
 
         $circuit->slug = \Illuminate\Support\Str::slug($circuit->name,'-');
-
         $circuit->save();
 
         return $circuit;
@@ -88,11 +92,8 @@ class CircuitController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Race  $page
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(Race $page)
+    public function destroy(Circuit $circuit)
     {
         //
     }
