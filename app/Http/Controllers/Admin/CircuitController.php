@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Circuit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Session;
 
 class CircuitController extends Controller
 {
@@ -72,6 +73,7 @@ class CircuitController extends Controller
             'turns' => 'required',
             'fastest_time' => 'required',
             'circuit_length' => 'required',
+            'description' => 'string',
         ];
 
 
@@ -85,6 +87,7 @@ class CircuitController extends Controller
         }
 
         $circuit->slug = \Illuminate\Support\Str::slug($circuit->name,'-');
+        session::flash('success_message','Úpravy byly zaznamenány!');
         $circuit->save();
 
         return $circuit;

@@ -63,6 +63,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
         $this->store_or_update($post);
         return redirect()->route('admin.posts.index');
     }
@@ -70,27 +71,15 @@ class PostController extends Controller
 
     private function store_or_update(Post $post = null)
     {
-        if(is_null($post))
-            $post = new Post;
-
-        $rules = [
-            'title' => 'required|string',
-            'short_desc' => 'required|string',
-            'long_desc' => 'required|string',
-            'category_id' => 'nullable|exists:post_categories,id',
-
-        ];
-
-        $this->validate(request(), $rules);
         $request = request();
-        //Upload image
+
         if($request->hasFile('image')){
             $image_tmp = $request->file('image');
             if($image_tmp->isValid()){
                 // Get Image Extension
-                $extensionImage = $image_tmp->getClientOriginalExtension();
+                $extension = $image_tmp->getClientOriginalExtension();
                 // Generate new image name
-                $imageName  = rand(1111,99999).'.'.$extensionImage;
+                $imageName  = rand(111,99999).'.'.$extension;
                 $imagePath = 'images/posts/'.$imageName;
                 // Upload the image
                 Image::make($image_tmp)->save($imagePath);
@@ -99,17 +88,32 @@ class PostController extends Controller
             }
         }
 
+        if(is_null($post))
+            $post = new Post;
+
+
+        $rules = [
+            'title' => 'required|string',
+            'short_desc' => 'required|string',
+            'long_desc' => 'required|string',
+            'category_id' => 'nullable|exists:post_categories,id',
+            'image' => '',
+
+        ];
+
+        $this->validate(request(), $rules);
+
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
             $post->$property = $value;
         }
+
         $post->user_id = auth()->id();
         $post->slug = \Illuminate\Support\Str::slug($post->title,'-');
 
-
         $post->save();
-        dd($post);
+
         return $post;
     }
 
@@ -118,6 +122,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        DB::delete('delete from posts where slug = ?', [$post]);
+        session::flash('success_message','Článek byl úspěšně smazán!');
+        return redirect('admin/posts');
     }
 }

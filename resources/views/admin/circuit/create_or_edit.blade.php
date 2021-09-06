@@ -97,6 +97,23 @@
                             </div>
                         @endforeach
                     @endif
+                    <div class="form-group">
+                        <label for="inputDescription">Popis</label>
+                        <textarea id="inputDescription" class="ckeditor form-control" rows="4" name="description">{{ old('description', $mode == 'edit' ? $circuit->description : null) }}</textarea>
+                        <script type="text/javascript">
+                            CKEDITOR.replace('description', {
+                                filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+                                filebrowserUploadMethod: 'form'
+                            });
+                        </script>
+                    </div>
+                    @if ($errors->has("long_desc"))
+                        @foreach ($errors->get("long_desc") as $error)
+                            <div class="errorMessage">
+                                <strong>{{$error}}</strong>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
                 <!-- /.card-body -->
             </div>

@@ -89,7 +89,8 @@ Route::middleware('role:administrator')->group(function () {
         'create' => 'admin.posts.create',
         'store' => 'admin.posts.store',
         'edit' => 'admin.posts.edit',
-        'update' => 'admin.posts.update'
+        'update' => 'admin.posts.update',
+        'delete' => 'admin.posts.delete'
     ]);
 });
 

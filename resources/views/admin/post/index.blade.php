@@ -65,8 +65,7 @@
                     <a class="btn btn-info btn-sm" href="{{ route('admin.posts.edit', $post) }}">
                         Upravit
                     </a>
-               <a class="btn btn-danger btn-sm" href="#">
-                        Smazat
+                   <a href="{{ url('admin/posts/delete/'.$post->slug) }}" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> Smazat
                     </a>
                 </td>
             </tr>
