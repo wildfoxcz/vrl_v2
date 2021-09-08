@@ -77,7 +77,7 @@
                                         <h4>O Závodu</h4>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-12 col-xl-3">
+                                        <div class="col-lg-12 col-xl-4">
                                             <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->logo }}" alt=""><br><br>
                                             <img src="{{ asset('images/minimaps') }}/{{ $race->circuits->minimap }}" alt=""><br><br>
                                             @auth
@@ -89,7 +89,7 @@
                                             @endauth
                                         </div>
 
-                                        <div class="col-lg-12 col-xl-9">
+                                        <div class="col-lg-12 col-xl-8">
                                             <p>{!! $race->description !!}</p>
                                         </div>
 
@@ -195,7 +195,7 @@
                                     </div>
                                     <div class="row">
 
-                                        <div class="col-lg-12 col-xl-3">
+                                        <div class="col-lg-12 col-xl-4">
                                             <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->logo }}" alt=""><br><br>
                                             <img src="{{ asset('images/minimaps') }}/{{ $race->circuits->minimap }}" alt=""><br><br>
                                             @auth
@@ -207,7 +207,7 @@
                                             @endauth
                                         </div>
 
-                                        <div class="col-lg-12 col-xl-9">
+                                        <div class="col-lg-12 col-xl-8">
                                             <p>{!! $race->circuits->description !!}</p>
                                         </div>
                                         @foreach($race->users as $user)
