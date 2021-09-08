@@ -9,7 +9,7 @@
                 <div class="titles no-margin">
                     <h4>{{ $post->title }}</h4>
                 </div>
-                <img src="{{ asset('images/posts')}}/{{ $post->image }}" alt="">
+                <img width="945" height="300" src="{{ asset('images/posts')}}/{{ $post->image }}" alt="">
                 <div class="info-panel">
                    <p>{!! $post->short_desc !!}</p>
                     <p>{!! $post->long_desc !!}</p>

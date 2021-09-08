@@ -16,13 +16,13 @@
                                 <div class="col-md-4">
                                     <div class="img-hover">
                                         <img src="images/posts/{{ $post->image }}" alt="" class="img-responsive">
-                                        <div class="overlay"><a href="single-news.html">+</a></div>
+                                        <div class="overlay"><a href="}<a href="{{ url('post') }}/{{ $post->slug }}">">+</a></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h5 style="font-family: Segoe UI;"><a href="single-news.html">{{ $post->title }}</a></h5>
-                                    <span class="data-info">{{ $post->created_at }}  / <i class="fa fa-comments"></i><a href="#">0</a></span>
-                                    <p>{{ $post->short_desc }}<a href="{{ $post->slug }}">Číst více [+]</a></p>
+                                    <h5 style="font-family: Segoe UI;"><a href="<a href="{{ url('post') }}/{{ $post->slug }}">{{ $post->title }}</a></h5>
+                                    <span class="data-info">{{ $post->created_at->format('d. m Y') }}  / <i class="fa fa-comments"></i><a href="#">0</a></span>
+                                    <p>{{ $post->short_desc }}<a href="{{ url('post') }}/{{ $post->slug }}">Číst více [+]</a></p>
                                 </div>
                             </div>
                         </div>
