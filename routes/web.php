@@ -19,6 +19,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'PagesController@homepage');
 Route::get('/page/{slug}', array('as' => 'page.show', 'uses' => 'PageController@show'));
+Route::get('/post/{slug}', array('as' => 'posts.show', 'uses' => 'PostController@show'));
 
 // Temporary register
 

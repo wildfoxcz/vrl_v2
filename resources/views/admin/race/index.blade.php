@@ -31,6 +31,9 @@
                     Šampionát
                 </th>
                 <th style="width: 20%">
+                    Datum začátku
+                </th>
+                <th style="width: 20%">
                 </th>
             </tr>
             </thead>
@@ -46,6 +49,11 @@
                 <td>
                     <a>
                         {{ $race->championship->name ?? '' }}
+                    </a>
+                </td>
+                <td>
+                    <a>
+                        {{ \Carbon\Carbon::parse($race->started_at)->format('d.m.Y - h:m:s') }}
                     </a>
                 </td>
                 <td class="project-actions text-right">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\PostCategory;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -42,13 +43,12 @@ class PostController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($slug = 'home')
     {
-        //
+        $postcategories = PostCategory::all();
+        $post = Post::whereSlug($slug)->first();
+        return \View::make('posts.show')->with('post', $post,'postcategories', $postcategories);
     }
 
     /**
