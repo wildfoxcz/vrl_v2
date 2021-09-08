@@ -46,9 +46,8 @@ class PostController extends Controller
      */
     public function show($slug = 'home')
     {
-        $postcategories = PostCategory::all();
         $post = Post::whereSlug($slug)->first();
-        return \View::make('posts.show')->with('post', $post,'postcategories', $postcategories);
+        return \View::make('posts.show')->with('post', $post);
     }
 
     /**

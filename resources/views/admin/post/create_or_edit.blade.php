@@ -14,7 +14,7 @@ $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' článek';
 @section('content')
     <!-- Default box -->
     @if($mode == 'edit')
-        <form action="{{ route('admin.posts.update', $post) }}" method="post">
+        <form action="{{ route('admin.posts.update', $post) }}" method="post" enctype="multipart/form-data">
             @method('patch')
             @else
                 <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
