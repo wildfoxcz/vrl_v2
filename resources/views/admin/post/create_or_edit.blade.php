@@ -118,7 +118,7 @@ $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' článek';
                                     <div class="form-group">
                                         <label for="exampleInputFile">Stávající obrázek</label>
                                         <div class="input-group">
-                                            <img src="{{ url('images/posts')}}/{{ old('image', $mode == 'edit' ? $post->image : null) }}" alt="">
+                                            <img width="400" src="{{ url('images/posts')}}/{{ old('image', $mode == 'edit' ? $post->image : null) }}" alt="">
                                         </div>
                                     </div>
                                 </div>

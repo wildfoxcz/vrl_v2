@@ -59,7 +59,7 @@
                 </td>
                 <td class="project-actions text-right">
 
-                   <a class="btn btn-primary btn-sm" href="{{ url('posts').'/'.$post->slug }}">
+                   <a class="btn btn-primary btn-sm" href="{{ url('post').'/'.$post->slug }}">
                         Zobrazit
                     </a>
                     <a class="btn btn-info btn-sm" href="{{ route('admin.posts.edit', $post) }}">
