@@ -32,7 +32,7 @@
                             {{ $race->name }}
                         </h1>
                         <ul>
-                            <li style="font-weight: normal; font-style: italic">Nejrýchlejší čas</li>
+                            <li style="font-weight: normal; font-style: italic">Nejrychlejší čas</li>
                             <li>{{ $race->circuits->fastest_time }}</li>
                             <li style="font-weight: normal; font-style: italic">Zatáček</li>
                             <li>{{ $race->circuits->turns }}</li>
@@ -61,7 +61,7 @@
                         <!-- Nav Tabs -->
                         <ul class="nav nav-tabs" id="myTab">
                             <li class="active"><a href="#summary" data-toggle="tab">O Závodu</a></li>
-                            <li><a href="#stats" data-toggle="tab">Výsledky</a></li>
+                            <li><a href="#about_circuit" data-toggle="tab">O Okruhu</a></li>
                         </ul>
                         <!-- End Nav Tabs -->
                     </div>
@@ -101,15 +101,15 @@
                                     </div>
                                 </div>
 
-                                <!--Items Club News -->
+<!--                                Items Club News
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3 class="clear-title">Match News</h3>
                                     </div>
 
-                                    <!--Item Club News -->
+                                    Item Club News
                                     <div class="col-lg-6 col-xl-3">
-                                        <!-- Widget Text-->
+                                         Widget Text
                                         <div class="panel-box">
                                             <div class="titles no-margin">
                                                 <h4><a href="#">World football's dates.</a></h4>
@@ -121,13 +121,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Widget Text-->
+                                         End Widget Text
                                     </div>
-                                    <!--End Item Club News -->
+                                    End Item Club News
 
-                                    <!--Item Club News -->
+                                    Item Club News
                                     <div class="col-lg-6 col-xl-3">
-                                        <!-- Widget Text-->
+                                         Widget Text
                                         <div class="panel-box">
                                             <div class="titles no-margin">
                                                 <h4><a href="#">Mbappe’s year to remember</a></h4>
@@ -139,13 +139,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Widget Text-->
+                                         End Widget Text
                                     </div>
-                                    <!--End Item Club News -->
+                                    End Item Club News
 
-                                    <!--Item Club News -->
+                                    Item Club News
                                     <div class="col-lg-6 col-xl-3">
-                                        <!-- Widget Text-->
+                                         Widget Text
                                         <div class="panel-box">
                                             <div class="titles no-margin">
                                                 <h4><a href="#">Egypt are one family</a></h4>
@@ -157,13 +157,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Widget Text-->
+                                         End Widget Text
                                     </div>
-                                    <!--End Item Club News -->
+                                    End Item Club News
 
-                                    <!--Item Club News -->
+                                    Item Club News
                                     <div class="col-lg-6 col-xl-3">
-                                        <!-- Widget Text-->
+                                         Widget Text
                                         <div class="panel-box">
                                             <div class="titles no-margin">
                                                 <h4><a href="#">Egypt are one family</a></h4>
@@ -175,53 +175,37 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Widget Text-->
+                                         End Widget Text
                                     </div>
-                                    <!--End Item Club News -->
+                                    End Item Club News
 
                                 </div>
-                                <!--End Items Club News -->
+                                End Items Club News -->
 
                             </div>
                             <!-- Tab One - Sumary -->
 
-                            <!-- Tab Two - stats -->
-                            <div class="tab-pane" id="stats">
-                                <!-- Result -->
-                                <div class="row match-stats">
-                                    <div class="col-lg-10">
-                                        <div class="team">
-                                            <img src="img/clubs-logos/colombia.png" alt="club-logo">
-                                            <a href="single-team.html">Colombia</a>
-                                        </div>
-                                    </div>
+                            <!-- Tab two - About Circuit -->
+                            <div class="tab-pane" id="about_circuit">
 
-                                    <div class="col-lg-2">
-                                        <div class="result-match">
-                                            VS
-                                        </div>
+                                <div class="panel-box padding-b">
+                                    <div class="titles">
+                                        <h4>O okruhu</h4>
                                     </div>
+                                    <div class="row">
 
-                                    <div class="col-lg-5">
-                                        <div class="team right">
-                                            <a href="single-team.html">Argentina</a>
-                                            <img src="img/clubs-logos/arg.png" alt="club-logo">
+
+                                        <div class="col-lg-12 col-xl-8">
+                                            <p>{!! $race->circuits->description !!}</p>
                                         </div>
-                                    </div>
 
-                                    <div class="col-lg-12">
-                                        <ul>
-                                            <li>
-                                                <span class="left">58.5</span>
-                                                <span class="center">Possession %</span>
-                                                <span class="right">40</span>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
-                                <!-- End Result -->
+
+
                             </div>
-                            <!-- End Tab Two - stats -->
+                            <!-- Tab two - About Circuit -->
+
                         </div>
                         <!-- Content Tabs -->
                     </div>

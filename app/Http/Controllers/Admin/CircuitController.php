@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use Image;
+use DB;
 
 class CircuitController extends Controller
 {
@@ -133,6 +134,7 @@ class CircuitController extends Controller
      */
     public function destroy(Circuit $circuit)
     {
-        //
+        DB::delete('delete from circuits where id = ?',[$circuit]);
+        return redirect()->route('admin.circuits.index');
     }
 }

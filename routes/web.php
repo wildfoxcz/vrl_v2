@@ -45,6 +45,8 @@ Route::post('ckeditor/upload', 'CkeditorController@upload')->name('ckeditor.uplo
 Route::middleware('role:administrator')->group(function () {
     Route::get('/admin','Admin\\AdminController@index')->name('admin.index');
 
+
+
     Route::resource('/admin/races', 'Admin\\RaceController')->names([
         'index' => 'admin.races.index',
         'create' => 'admin.races.create',
@@ -58,7 +60,8 @@ Route::middleware('role:administrator')->group(function () {
         'create' => 'admin.pages.create',
         'store' => 'admin.pages.store',
         'edit' => 'admin.pages.edit',
-        'update' => 'admin.pages.update'
+        'update' => 'admin.pages.update',
+        'destroy' =>'admin.pages.destroy'
     ]);
 
     Route::resource('/admin/circuits', 'Admin\\CircuitController')->names([

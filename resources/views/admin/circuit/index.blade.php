@@ -57,10 +57,10 @@
                         </i>
                         Upravit
                     </a>
-<!--                    <a class="btn btn-danger btn-sm" href="#">
+<!--                    <a class="btn btn-danger btn-sm" href="destroy/{{ $circuit->id }}">
                         <i class="fas fa-trash">
                         </i>
-                        Delete
+                        Smazat
                     </a>-->
                 </td>
             </tr>
