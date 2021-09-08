@@ -73,6 +73,17 @@ class PostController extends Controller
     {
         $request = request();
 
+        if(is_null($post))
+            $post = new Post;
+        $rules = [
+            'title' => 'required|string',
+            'short_desc' => 'required|string',
+            'long_desc' => 'required|string',
+            'category_id' => 'nullable|exists:post_categories,id',
+            'image' => '',
+
+        ];
+        $this->validate(request(), $rules);
         if($request->hasFile('image')){
             $image_tmp = $request->file('image');
             if($image_tmp->isValid()){
@@ -87,33 +98,14 @@ class PostController extends Controller
                 $post->image = $imageName;
             }
         }
-
-        if(is_null($post))
-            $post = new Post;
-
-
-        $rules = [
-            'title' => 'required|string',
-            'short_desc' => 'required|string',
-            'long_desc' => 'required|string',
-            'category_id' => 'nullable|exists:post_categories,id',
-            'image' => '',
-
-        ];
-
-        $this->validate(request(), $rules);
-
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
             $post->$property = $value;
         }
-
         $post->user_id = auth()->id();
         $post->slug = \Illuminate\Support\Str::slug($post->title,'-');
-
         $post->save();
-
         return $post;
     }
 
