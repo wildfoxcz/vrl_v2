@@ -16,12 +16,12 @@
                                 <div class="col-md-4">
                                     <div class="img-hover">
                                         <img src="images/posts/{{ $post->image }}" alt="" class="img-responsive">
-                                        <div class="overlay"><a href="}<a href="{{ url('post') }}/{{ $post->slug }}">">+</a></div>
+                                        <div class="overlay"><a href="{{ url('post') }}/{{ $post->slug }}">+</a></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <h5 style="font-family: Segoe UI;"><a href="<a href="{{ url('post') }}/{{ $post->slug }}">{{ $post->title }}</a></h5>
-                                    <span class="data-info">{{ $post->created_at->format('d. m Y') }}  / <i class="fa fa-comments"></i><a href="#">0</a></span>
+                                    <span class="data-info">{{ \Carbon\Carbon::parse($post->created_at)->format('d. m. Y') }}  / <i class="fa fa-comments"></i><a href="#">0</a></span>
                                     <p>{{ $post->short_desc }}<a href="{{ url('post') }}/{{ $post->slug }}">Číst více [+]</a></p>
                                 </div>
                             </div>
@@ -30,6 +30,8 @@
                         @endforeach
                     </div>
                     <!-- End Recent Post -->
+                    <div style="  display: flex;
+  justify-content: center;">{{ $posts->links() }}</div>
                 </div>
                 <!-- End content Left -->
 @endsection
