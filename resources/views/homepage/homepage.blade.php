@@ -20,7 +20,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h5 style="font-family: Segoe UI;"><a href="<a href="{{ url('post') }}/{{ $post->slug }}">{{ $post->title }}</a></h5>
+                                    <h5 style="font-family: Segoe UI;"><a href="{{ url('post') }}/{{ $post->slug }}">{{ $post->title }}</a></h5>
                                     <span class="data-info">{{ \Carbon\Carbon::parse($post->created_at)->format('d. m. Y') }}  / <i class="fa fa-comments"></i><a href="#">0</a></span>
                                     <p>{{ $post->short_desc }}<a href="{{ url('post') }}/{{ $post->slug }}">Číst více [+]</a></p>
                                 </div>

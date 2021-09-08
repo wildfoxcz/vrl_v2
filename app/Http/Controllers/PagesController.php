@@ -12,7 +12,7 @@ class PagesController extends Controller
 {
     public function homepage(){
         $streams = Stream::all();
-        $posts = DB::table('posts')->paginate(6);
+        $posts = DB::table('posts')->orderby('created_at','desc')->paginate(6);
         return view('homepage.homepage',compact('streams'), [
             'posts' => $posts,
         ]);;

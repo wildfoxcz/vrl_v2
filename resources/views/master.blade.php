@@ -58,14 +58,14 @@
         <div id="hero-slider" class="hero-slider">
             @foreach ($posts as $post)
             <!-- Item Slide-->
-            <div class="item-slider" style="background:url(images/posts/{{ $post->image }});">
+            <div class="item-slider" style="background:url({{asset('images/posts/')}}{{ $post->image }});">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-7">
                             <div style="padding-top:250px;" class="info-slider">
                                 <h1>{{ $post->title }}</h1>
                                 <p>{{ $post->short_desc }}</p>
-                                <a href="{{ $post->slug }}" class="btn-iw outline">Číst více <i class="fa fa-long-arrow-right"></i></a>
+                                <a href="{{ url('post') }}/{{ $post->slug }}" class="btn-iw outline">Číst více <i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

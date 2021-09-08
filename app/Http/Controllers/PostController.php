@@ -13,7 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest('created_at')->paginate(5);
+        $posts = Post::orderBy('created_at', 'ASC')->paginate(5);
         return view('homepage.homepage', compact('posts'));
 
     }
