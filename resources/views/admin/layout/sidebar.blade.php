@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    <a href="{{ url('admin') }}" class="brand-link">
         <img src="{{ asset('img/logo.png') }}" alt="VRL CZ" class="brand-image" style="opacity: .8">
         <span class="brand-text font-weight-light">ADMIN</span>
     </a>
@@ -90,6 +90,14 @@
                 <li class="nav-item">
                     <a href="{{ url('admin/teams') }}" class="nav-link">
                         <i class="nav-icon fas fa-sitemap"></i>
+                        <p>
+                            Týmy
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('admin/streams') }}" class="nav-link">
+                        <i class="nav-icon fab fa-youtube"></i>
                         <p>
                             Týmy
                         </p>

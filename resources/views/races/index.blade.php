@@ -21,7 +21,6 @@
                     <table class="table-striped table-responsive table-hover">
                         <thead>
                         <tr>
-                            <th></th>
                             <th>Název závodu</th>
                             <th>Okruh</th>
                             <th>Datum</th>
@@ -32,9 +31,6 @@
                         <tbody>
                         @foreach($races as $race)
                         <tr>
-                            <td>
-                                <img src="{{ asset('img/clubs-teams/single-team.jpg') }}" alt="">
-                            </td>
                             <td>
                                 <a style="color: black" href="races/{{ $race->slug }}">
                                     {{ $race->name }}

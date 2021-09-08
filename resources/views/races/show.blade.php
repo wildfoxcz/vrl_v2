@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Section Title -->
-    <div class="section-title single-result" style="background:url({{ asset('img/circuits') }}/{{ $race->circuits->image }})">
+    <div class="section-title single-result" style="background:url({{ asset('images/circuits') }}/{{ $race->circuits->image }})">
         <div class="container">
             <div class="row">
                 <!-- Result Location -->
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-xl-4">
-                                            <img src="{{ asset('img/clubs-teams/single-team.jpg') }}" alt=""><br><br>
+                                            <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->logo }}" alt=""><br><br>
                                             @auth
                                                 @if($race->users->contains(auth()->user()))
                                                     Jsi přihlášen v závodu

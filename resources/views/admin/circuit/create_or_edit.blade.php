@@ -14,10 +14,10 @@
 @section('content')
 <!-- Default box -->
 @if($mode == 'edit')
-<form action="{{ route('admin.circuits.update', $circuit) }}" method="post">
+<form action="{{ route('admin.circuits.update', $circuit) }}" method="post" enctype="multipart/form-data">
 @method('patch')
 @else
-<form action="{{ route('admin.circuits.store') }}" method="post">
+<form action="{{ route('admin.circuits.store') }}" method="post" enctype="multipart/form-data">
 @endif
     @csrf
     <div class="row">
@@ -61,6 +61,32 @@
                             </div>
                         @endforeach
                     @endif
+                    <div class="form-group">
+                        <label for="image">Obrázek okruhu</label>
+                        @if($mode == 'edit')
+                        <a target="_blank" href="{{ url('images/circuits') }}/{{ old('image', $mode == 'edit' ? $circuit->image : null) }}">(zobrazit aktuální)</a>
+                        @else
+                        @endif
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image" name="image">
+                                <label class="custom-file-label" for="exampleInputFile">vyberte soubor</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="logo">Mapa okruhu</label>
+                        @if($mode == 'edit')
+                            <a target="_blank" href="{{ url('images/circuit_logos') }}/{{ old('image', $mode == 'edit' ? $circuit->logo : null) }}">(zobrazit aktuální)</a>
+                        @else
+                        @endif
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="logo" name="logo">
+                                <label class="custom-file-label" for="exampleInputFile">vyberte soubor</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -107,8 +133,8 @@
                             });
                         </script>
                     </div>
-                    @if ($errors->has("long_desc"))
-                        @foreach ($errors->get("long_desc") as $error)
+                    @if ($errors->has("description"))
+                        @foreach ($errors->get("descripiton") as $error)
                             <div class="errorMessage">
                                 <strong>{{$error}}</strong>
                             </div>

@@ -5,6 +5,7 @@ use App\Circuit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
+use Image;
 
 class CircuitController extends Controller
 {
@@ -64,6 +65,8 @@ class CircuitController extends Controller
 
     private function store_or_update(Circuit $circuit = null)
     {
+        $request = request();
+
         if(is_null($circuit))
             $circuit = new Circuit();
 
@@ -74,11 +77,43 @@ class CircuitController extends Controller
             'fastest_time' => 'required',
             'circuit_length' => 'required',
             'description' => 'string',
+            'image' => '',
+            'logo' => '',
         ];
 
 
 
         $this->validate(request(), $rules);
+
+        if($request->hasFile('image')){
+            $image_tmp = $request->file('image');
+            if($image_tmp->isValid()){
+                // Get Image Extension
+                $extension = $image_tmp->getClientOriginalExtension();
+                // Generate new image name
+                $imageName  = rand(111,99999).'.'.$extension;
+                $imagePath = 'images/circuits/'.$imageName;
+                // Upload the image
+                Image::make($image_tmp)->save($imagePath);
+                // Save Circuit Image
+                $circuit->image = $imageName;
+            }
+        }
+
+        if($request->hasFile('logo')){
+            $logo_tmp = $request->file('logo');
+            if($logo_tmp->isValid()){
+                // Get Image Extension
+                $extension = $logo_tmp->getClientOriginalExtension();
+                // Generate new image name
+                $logoName  = rand(111,99999).'.'.$extension;
+                $logoPath = 'images/circuit_logos/'.$logoName;
+                // Upload the image
+                Image::make($logo_tmp)->save($logoPath);
+                // Save Circuit Image
+                $circuit->logo = $logoName;
+            }
+        }
 
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
