@@ -75,14 +75,27 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="logo">Mapa okruhu</label>
+                        <label for="logo">Logo okruhu</label>
                         @if($mode == 'edit')
-                            <a target="_blank" href="{{ url('images/circuit_logos') }}/{{ old('image', $mode == 'edit' ? $circuit->logo : null) }}">(zobrazit aktuální)</a>
+                            <a target="_blank" href="{{ url('images/circuit_logos') }}/{{ old('logo', $mode == 'edit' ? $circuit->logo : null) }}">(zobrazit aktuální)</a>
                         @else
                         @endif
                         <div class="input-group">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="logo" name="logo">
+                                <label class="custom-file-label" for="exampleInputFile">vyberte soubor</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="minimap">Mapa okruhu</label>
+                        @if($mode == 'edit')
+                            <a target="_blank" href="{{ url('images/minimaps') }}/{{ old('minimap', $mode == 'edit' ? $circuit->minimap : null) }}">(zobrazit aktuální)</a>
+                        @else
+                        @endif
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="minimap" name="minimap">
                                 <label class="custom-file-label" for="exampleInputFile">vyberte soubor</label>
                             </div>
                         </div>

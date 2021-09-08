@@ -77,8 +77,9 @@
                                         <h4>O Závodu</h4>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-12 col-xl-4">
+                                        <div class="col-lg-12 col-xl-3">
                                             <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->logo }}" alt=""><br><br>
+                                            <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->minimap }}" alt=""><br><br>
                                             @auth
                                                 @if($race->users->contains(auth()->user()))
                                                     Jsi přihlášen v závodu
@@ -88,7 +89,7 @@
                                             @endauth
                                         </div>
 
-                                        <div class="col-lg-12 col-xl-8">
+                                        <div class="col-lg-12 col-xl-9">
                                             <p>{!! $race->description !!}</p>
                                         </div>
 
@@ -194,11 +195,27 @@
                                     </div>
                                     <div class="row">
 
-
-                                        <div class="col-lg-12 col-xl-8">
-                                            <p>{!! $race->circuits->description !!}</p>
+                                        <div class="col-lg-12 col-xl-3">
+                                            <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->logo }}" alt=""><br><br>
+                                            <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->minimap }}" alt=""><br><br>
+                                            @auth
+                                                @if($race->users->contains(auth()->user()))
+                                                    Jsi přihlášen v závodu
+                                                @else
+                                                    <a href="{{ route('races.join', $race) }}" class="btn btn-primary">Přihlásit se do závodu</a>
+                                                @endif
+                                            @endauth
                                         </div>
 
+                                        <div class="col-lg-12 col-xl-9">
+                                            <p>{!! $race->circuits->description !!}</p>
+                                        </div>
+                                        @foreach($race->users as $user)
+                                            <tr>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->pivot->points }}</td>
+                                            </tr>
+                                        @endforeach
                                     </div>
                                 </div>
 

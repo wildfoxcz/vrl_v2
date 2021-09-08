@@ -80,6 +80,7 @@ class CircuitController extends Controller
             'description' => 'string',
             'image' => '',
             'logo' => '',
+            'minimap' => '',
         ];
 
 
@@ -113,6 +114,21 @@ class CircuitController extends Controller
                 Image::make($logo_tmp)->save($logoPath);
                 // Save Circuit Image
                 $circuit->logo = $logoName;
+            }
+        }
+
+        if($request->hasFile('minimap')){
+            $minimap_tmp = $request->file('minimap');
+            if($minimap_tmp->isValid()){
+                // Get Image Extension
+                $extension = $minimap_tmp->getClientOriginalExtension();
+                // Generate new image name
+                $minimapName  = rand(111,99999).'.'.$extension;
+                $minimapPath = 'images/minimaps/'.$minimapName;
+                // Upload the image
+                Image::make($minimap_tmp)->save($minimapPath);
+                // Save Circuit Image
+                $circuit->minimap = $minimapName;
             }
         }
 
