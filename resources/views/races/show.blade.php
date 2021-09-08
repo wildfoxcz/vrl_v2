@@ -79,7 +79,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-xl-3">
                                             <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->logo }}" alt=""><br><br>
-                                            <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->minimap }}" alt=""><br><br>
+                                            <img src="{{ asset('images/minimaps') }}/{{ $race->circuits->minimap }}" alt=""><br><br>
                                             @auth
                                                 @if($race->users->contains(auth()->user()))
                                                     Jsi přihlášen v závodu
@@ -197,7 +197,7 @@
 
                                         <div class="col-lg-12 col-xl-3">
                                             <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->logo }}" alt=""><br><br>
-                                            <img src="{{ asset('images/circuit_logos') }}/{{ $race->circuits->minimap }}" alt=""><br><br>
+                                            <img src="{{ asset('images/minimaps') }}/{{ $race->circuits->minimap }}" alt=""><br><br>
                                             @auth
                                                 @if($race->users->contains(auth()->user()))
                                                     Jsi přihlášen v závodu
