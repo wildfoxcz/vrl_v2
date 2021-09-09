@@ -13,8 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        $postcategories = Post::all();
         $posts = Post::orderBy('created_at', 'ASC')->paginate(5);
-        return view('homepage.homepage', compact('posts'));
+        return view('homepage.homepage', compact('posts','postcategories'));
 
     }
 
@@ -44,8 +45,9 @@ class PostController extends Controller
      */
     public function show($slug = 'home')
     {
+        $postcategories = PostCategory::all();
         $post = Post::whereSlug($slug)->first();
-        return \View::make('posts.show')->with('post', $post);
+        return \View::make('posts.show',compact('postcategories'))->with('post', $post);
     }
 
     /**

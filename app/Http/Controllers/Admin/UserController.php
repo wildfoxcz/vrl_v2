@@ -7,6 +7,10 @@ use App\UserDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Hash;
+use Session;
+use Auth;
+use Image;
 
 class UserController extends Controller
 {
@@ -77,13 +81,14 @@ class UserController extends Controller
 
         $this->validate(request(), $rules);
 
+
+
         $properties = array_keys($rules);
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
             $user->$property = $value;
         }
 
-        $user->slug = \Illuminate\Support\Str::slug($user->name,'-');
 
         $user->save();
 

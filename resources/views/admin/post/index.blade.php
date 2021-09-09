@@ -48,7 +48,7 @@
                 </td>
                 <td>
                     <a>
-                        {{ $post->postcategories->name }}
+                        {{ $post->postcategories['name'] }}
                     </a>
                 </td>
                 <td>

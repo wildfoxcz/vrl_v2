@@ -18,7 +18,7 @@ class CreateTeamsTable extends Migration
             $table->string('name','200');
             $table->string('slug','200');
             $table->text('description');
-            $table->integer('limit')->nullable();
+            $table->integer('max_users')->nullable();
             $table->string('image','200')->nullable();
             $table->bigInteger('gametype_id')->unsigned();
             $table->foreign('gametype_id')->references('id')->on('gametypes')->onDelete('cascade');

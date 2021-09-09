@@ -67,18 +67,24 @@
                 </li>
             @endguest
             @auth
-                <li>
-                    <a href="{{ url('/users') }}/{{ auth()->user()->name }}">Můj profil</a>
-                </li>
-
-                @if(auth()->user()->isAuthorised('administrator'))
+                <li class="current">
+                <a href="#">{{ auth()->user()->name }}</a>
+                <ul class="sub-current">
+                    @if(auth()->user()->isAuthorised('administrator'))
+                        <li>
+                            <a href="{{ route('admin.index') }}">Administrace</a>
+                        </li>
+                    @endif
                     <li>
-                        <a href="{{ route('admin.index') }}">Administrace</a>
+                        <a href="{{ url('/users') }}/{{ auth()->user()->name }}">Zobrazit profil</a>
                     </li>
-                @endif
-
-                <li>
-                    <a href="{{ url('/logout') }}">Odhlásit</a>
+                    <li>
+                        <a href="#">Upravit profil</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/logout') }}">Odhlásit</a>
+                    </li>
+                </ul>
                 </li>
             @endauth
 

@@ -69,7 +69,8 @@ Route::middleware('role:administrator')->group(function () {
         'create' => 'admin.circuits.create',
         'store' => 'admin.circuits.store',
         'edit' => 'admin.circuits.edit',
-        'update' => 'admin.circuits.update'
+        'update' => 'admin.circuits.update',
+        'destroy' =>'admin.circuits.destroy'
     ]);
 
     Route::resource('/admin/users', 'Admin\\UserController')->names([
@@ -88,13 +89,20 @@ Route::middleware('role:administrator')->group(function () {
         'update' => 'admin.championship.update'
     ]);
 
+    Route::resource('/admin/teams', 'Admin\\TeamController')->names([
+        'index' => 'admin.teams.index',
+        'create' => 'admin.teams.create',
+        'store' => 'admin.teams.store',
+        'edit' => 'admin.teams.edit',
+        'update' => 'admin.teams.update',
+    ]);
+
     Route::resource('/admin/posts', 'Admin\\PostController')->names([
         'index' => 'admin.posts.index',
         'create' => 'admin.posts.create',
         'store' => 'admin.posts.store',
         'edit' => 'admin.posts.edit',
         'update' => 'admin.posts.update',
-        'delete' => 'admin.posts.delete'
     ]);
 });
 

@@ -93,7 +93,9 @@
                 </div>
                 <div class="info-panel">
                     <ul class="list">
-                            <li><i class="fa fa-check"></i><a href="#">{{ $post->postcategories->name }}</a></li>
+                        @foreach($postcategories as $postcategory)
+                            <li><i class="fa fa-check"></i><a href="#">{{ $postcategory->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use Image;
 use DB;
+use App\Country;
 
 class CircuitController extends Controller
 {
@@ -25,8 +26,8 @@ class CircuitController extends Controller
      */
     public function create()
     {
-
-        return view('admin.circuit.create_or_edit');
+        $countries = Country::all();
+        return view('admin.circuit.create_or_edit',compact('countries'));
     }
 
     /**
@@ -51,26 +52,27 @@ class CircuitController extends Controller
      */
     public function edit(Circuit $circuit)
     {
-
-        return view('admin.circuit.create_or_edit', compact('circuit'));
+        $countries = Country::all();
+        return view('admin.circuit.create_or_edit', compact('circuit','countries'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,Circuit $circuit)
+    public function update(Request $request, Circuit $circuit)
     {
+
         $this->store_or_update($circuit);
         return redirect()->route('admin.circuits.index');
     }
 
     private function store_or_update(Circuit $circuit = null)
     {
+
         $request = request();
 
         if(is_null($circuit))
-            $circuit = new Circuit();
-
+            $circuit = new Circuit;
         $rules = [
             'name' => 'required|string',
             'country' => 'required',
@@ -78,11 +80,7 @@ class CircuitController extends Controller
             'fastest_time' => 'required',
             'circuit_length' => 'required',
             'description' => 'string',
-            'image' => '',
-            'logo' => '',
-            'minimap' => '',
         ];
-
 
 
         $this->validate(request(), $rules);
@@ -133,15 +131,13 @@ class CircuitController extends Controller
         }
 
         $properties = array_keys($rules);
+
         foreach(array_intersect_key(request()->input(), array_flip($properties)) as $property => $value)
         {
             $circuit->$property = $value;
         }
-
         $circuit->slug = \Illuminate\Support\Str::slug($circuit->name,'-');
-        session::flash('success_message','Úpravy byly zaznamenány!');
         $circuit->save();
-
         return $circuit;
     }
 

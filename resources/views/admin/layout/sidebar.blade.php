@@ -99,7 +99,7 @@
                     <a href="{{ url('admin/streams') }}" class="nav-link">
                         <i class="nav-icon fab fa-youtube"></i>
                         <p>
-                            Týmy
+                            Vysílání
                         </p>
                     </a>
                 </li>

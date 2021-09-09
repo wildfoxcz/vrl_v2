@@ -5,15 +5,7 @@
         <div class="titles no-margin">
             <h4>Název panelu</h4>
         </div>
-        <!-- Locations Video -->
-        <div class="row">
-            <iframe src="https://www.youtube.com/embed/AfOlAUd7u4o" class="video"></iframe>
-            <div class="info-panel">
-                <h4>Rio de Janeiro</h4>
-                <p>Lorem ipsum dolor sit amet, sit amet, consectetur adipisicing elit, elit, incididunt ut labore et dolore magna aliqua sit amet, consectetur adipisicing elit,</p>
-            </div>
-        </div>
-        <!-- End Locations Video -->
+        @include('extensions.stream')
     </div>
     <!-- End Video presentation-->
 </aside>
@@ -26,7 +18,7 @@
         <div class="titles no-margin">
             <h4>Discord</h4>
         </div>
-        <a href="http://themeforest.net/user/iwthemes/portfolio?ref=iwthemes" target="_blank">
+        <a href="{{ url('/register') }}">
             <img src="img/adds/discord.jpg" class="img-responsive" alt="">
         </a>
     </div>

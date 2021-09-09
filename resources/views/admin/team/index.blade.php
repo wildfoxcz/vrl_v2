@@ -1,20 +1,19 @@
 @extends('admin.layout.layout')
 
-@section('title', 'Seznam uživatelů')
+@section('title', 'Seznam týmů')
 
 @section('content')
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Stránky</h3>
+        <h3 class="card-title">Týmy</h3>
 
         <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                <i class="fas fa-times"></i>
-            </button>
+            <a class="btn btn-primary btn-sm" href="{{ url('admin/teams/create') }}">
+                <i class="fas fa-folder">
+                </i>
+                Přidat tým
+            </a>
         </div>
     </div>
     <div class="card-body p-0">
@@ -24,36 +23,40 @@
                 <th style="width: 1%">
                     #
                 </th>
-                <th style="width: 20%">
-                    Jméno uživatele
+                <th style="width: 60%">
+                    Název týmu
                 </th>
-                <th style="width: 20%">
-                    E-mail
+                <th style="width: 1%">
+                    Limit
                 </th>
                 <th style="width: 20%">
                 </th>
             </tr>
             </thead>
             <tbody>
-            @foreach($users as $user)
+            @foreach($teams as $team)
             <tr>
                 <td>
-                    <img width="25" src="{{asset('/img/flags') }}/{{ $user->user_detail->country }}.png" alt="">
+                    #{{ $team->id }}
                 </td>
                 <td>
-                    {{ $user->name }}
+                    {{ $team->name }}
                 </td>
                 <td>
                     <a>
-                        {{ $user->email }}
+                        {{ $team->limit }}
                     </a>
                 </td>
                 <td class="project-actions text-right">
 
-                   <a class="btn btn-primary btn-sm" href="{{ url('users') }}/{{ $user->name }}">
+                   <a class="btn btn-primary btn-sm" href="{{ url('teams').'/'.$team->slug }}">
+                        <i class="fas fa-folder">
+                        </i>
                         Zobrazit
                     </a>
-                    <a class="btn btn-info btn-sm" href="{{ route('admin.users.edit', $user) }}">
+                    <a class="btn btn-info btn-sm" href="{{ route('admin.teams.edit', $team) }}">
+                        <i class="fas fa-pencil-alt">
+                        </i>
                         Upravit
                     </a>
 <!--                    <a class="btn btn-danger btn-sm" href="#">

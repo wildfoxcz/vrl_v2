@@ -10,4 +10,5 @@ class Circuit extends Model
     {
         return $this->belongsTo('App\Circuit');
     }
+
 }

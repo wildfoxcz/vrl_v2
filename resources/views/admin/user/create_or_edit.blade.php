@@ -1,10 +1,10 @@
 <?php
-    if(isset($page))
+    if(isset($user))
         $mode = 'edit';
     else
         $mode = 'create';
 
-    $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' stránku';
+    $actionText = ($mode == 'edit' ? 'Upravit' : 'Vytvořit').' uživatele';
 ?>
 
 @extends('admin.layout.layout')
@@ -14,17 +14,17 @@
 @section('content')
 <!-- Default box -->
 @if($mode == 'edit')
-<form action="{{ route('admin.pages.update', $page) }}" method="post">
+<form action="{{ route('admin.users.update', $user) }}" method="post">
 @method('patch')
 @else
-<form action="{{ route('admin.pages.store') }}" method="post">
+<form action="{{ route('admin.useres.store') }}" method="post">
 @endif
     @csrf
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Obecné</h3>
+                    <h3 class="card-title">Základní informace</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -35,8 +35,8 @@
 
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="inputName">Název stránky</label>
-                        <input type="text" id="inputName" class="form-control" name="title" value="{{ old('title', $mode == 'edit' ? $page->title : null) }}">
+                        <label for="inputName">Jméno uživatele</label>
+                        <input type="text" id="inputName" class="form-control" name="name" value="{{ old('name', $mode == 'edit' ? $user->name : null) }}">
                     </div>
                     @if ($errors->has("title"))
                         @foreach ($errors->get("title") as $error)
@@ -46,22 +46,25 @@
                         @endforeach
                     @endif
                     <div class="form-group">
-                        <label for="inputDescription">Obsah stránky</label>
-                        <textarea id="inputDescription" class="ckeditor form-control" rows="4" name="content">{{ old('content', $mode == 'edit' ? $page->content : null) }}</textarea>
-                        <script type="text/javascript">
-                            CKEDITOR.replace('content', {
-                                filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
-                                filebrowserUploadMethod: 'form'
-                            });
-                        </script>
-                       </div>
-                    @if ($errors->has("content"))
-                        @foreach ($errors->get("content") as $error)
-                            <div class="errorMessage">
+                        <label for="inputName">E-mail uživatele</label>
+                        <input type="text" id="inputName" class="form-control" name="email" value="{{ old('email', $mode == 'edit' ? $user->email : null) }}">
+                    </div>
+                    @if ($errors->has("email"))
+                        @foreach ($errors->get("email") as $error)
+                            <div class="errorMessage"> <!-- @todo find class for errors in adminLTE -->
                                 <strong>{{$error}}</strong>
                             </div>
                         @endforeach
                     @endif
+                    <div class="form-group">
+                        <label for="inputName">Heslo uživatele</label>
+                        <input type="password" id="inputName" class="form-control" name="password" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Heslo uživatele </label><i> &nbsp;(znovu)</i>
+                        <input type="password" id="inputName" class="form-control" name="verify_password" value="">
+                    </div>
+
                 </div>
                 <!-- /.card-body -->
             </div>
