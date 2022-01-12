@@ -23,6 +23,16 @@ class User extends Authenticatable
         return $this->hasOne(UserDetail::class);
     }
 
+    public function championships()
+    {
+        return $this->belongsToMany(Championship::class);
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class);
+    }
+
 
     public function isAuthorised($requiredRole)
     {

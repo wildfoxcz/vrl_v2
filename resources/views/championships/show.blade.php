@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Section Title -->
-    <div class="section-title single-result" style="background:url({{ asset('img/circuits') }}/{{ $race->circuits->image }})">
+    <div class="section-title single-result" style="background:url({{ asset('img/circuits') }}/{{-- @todo --}})">
         <div class="container">
             <div class="row">
                 <!-- Result Location -->
@@ -61,24 +61,6 @@
                                         <h4>O Závodu</h4>
                                     </div>
                                     <div class="row">
-                                        <table>
-                                        @foreach($championship->teams as $team)
-                                            <tr>
-                                                <td>{{ $team->name }}</td>
-                                                @foreach($championship->races as $race)
-                                                    <td>@todo</td>
-                                                @endforeach
-                                                <td>@todo</td>
-                                            </tr>
-                                            @foreach($team->users as $user)
-                                                <td>{{ $user->name }}</td>
-                                                @foreach($championship->races as $race)
-                                                    <td>{{ $race->users()->get($user->id)->pivot->points }}</td>
-                                                @endforeach
-                                            @endforeach
-                                            <td>@todo</td>
-                                        @endforeach
-                                        </table>
                                     </div>
                                 </div>
 
@@ -166,39 +148,55 @@
                             </div>
                             <!-- Tab One - Sumary -->
 
+                            @auth
+                                @if($championship->users->contains(auth()->user()))
+                                    Jsi přihlášen v šampionátu
+                                @else
+                                    <a href="{{ route('championships.join', $championship) }}" class="btn btn-primary">Přihlásit se do šampionátu</a>
+                                @endif
+                            @endauth
+
                             <!-- Tab Two - stats -->
                             <div class="tab-pane" id="stats">
+                                {{--dd($championship)--}}
                                 <!-- Result -->
                                 <div class="row match-stats">
-                                    <div class="col-lg-10">
-                                        <div class="team">
-                                            <img src="img/clubs-logos/colombia.png" alt="club-logo">
-                                            <a href="single-team.html">Colombia</a>
-                                        </div>
-                                    </div>
+                                    <table>
+                                        <tr>
+                                            <td>Tým</td>
+                                        
+                                            @for($i = 1; $championship->races && $i <= $championship->races->count(); $i++)
+                                                <td>R{{ $i }}</td>
+                                            @endfor
+                                            <td>Záporné</td>
+                                            <td>Celekem</td>
+                                        </tr>
 
-                                    <div class="col-lg-2">
-                                        <div class="result-match">
-                                            VS
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-5">
-                                        <div class="team right">
-                                            <a href="single-team.html">Argentina</a>
-                                            <img src="img/clubs-logos/arg.png" alt="club-logo">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <ul>
-                                            <li>
-                                                <span class="left">58.5</span>
-                                                <span class="center">Possession %</span>
-                                                <span class="right">40</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                        @foreach($teams as $team)
+                                            <tr>
+                                                <td>{{ $team->name }}</td>
+                                                @foreach($championship->races as $race)
+                                                    <td>{{$race->sumTeamPoints($team)}}</td>
+                                                @endforeach
+                                                <td>{{$championship->sumTeamPenaltyPoints($team)}}</td>
+                                                <td>{{$championship->sumTeamPoints($team)}}</td>
+                                            </tr>
+                                            @foreach($team->users as $user)
+                                                <td>{{ $user->name }}</td>
+                                                @foreach($championship->races as $race)
+                                                <td>
+                                                    @if($userRace = $race->users()->where('id', $user->id)->first())
+                                                        {{ $userRace->pivot->points }}
+                                                    @else
+                                                        0
+                                                    @endif
+                                                </td>
+                                                @endforeach
+                                            @endforeach
+                                            <td>{{ $championship->sumUserPenaltyPoints($user) }}</td>
+                                            <td>{{ $championship->sumUserPoints($user) }}</td>
+                                        @endforeach
+                                    </table>
                                 </div>
                                 <!-- End Result -->
                             </div>

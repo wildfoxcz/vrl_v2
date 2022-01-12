@@ -32,6 +32,9 @@ Route::get('/races/{race}/join','RaceController@join')->middleware('auth')->name
 
 // Users
 
+Route::get('/championships/{championship}','ChampionshipController@show')->name('championships.show');
+Route::get('/championships/{championship}/join','ChampionshipController@join')->middleware('auth')->name('championships.join');
+
 Route::resource('/users', 'UserController');
 
 // Administrace

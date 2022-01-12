@@ -25,9 +25,29 @@ class Race extends Model
         return $this->belongsToMany(User::class, "races_users")->withPivot('points', 'penalty_points');
     }
 
-    public function circuits()
+    public function circuit()
     {
         return $this->belongsTo('App\Circuit', 'circuit_id');
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany('App\Team');
+    }
+
+    public function sumTeamPoints(Team $team)
+    {
+        $sum = 0;
+        $users = $this->users()->with('teams')->get();
+        foreach($users as $user)
+        {
+            foreach($user->teams as $team)
+            {
+                if($team->id == $team->id)
+                    $sum += $user->pivot->points;
+            }
+        }
+        return $sum;
     }
 
 }
